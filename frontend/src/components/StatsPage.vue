@@ -75,7 +75,6 @@
   import axios from 'axios'
   import StatsTable from "./StatsTable";
   import StatFilters from "./StatFilters";
-  import * as d3 from "d3";
   
   export default {
     components: {

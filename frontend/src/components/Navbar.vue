@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-navbar-brand>
-        <img alt="Team logo" src="../assets/PlasticsLogoText.png" width="50">
+        <img alt="Team logo" src="../assets/plastics_logo_circle_851.png" width="50">
         {{ teamName }}
       </b-navbar-brand>
       <b-navbar-nav variant="dark" type="dark">

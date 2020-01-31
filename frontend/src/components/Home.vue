@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import StatsPage from 'StatsPage'
-  import Navbar from 'Navbar'
+  import StatsPage from './StatsPage'
+  import Navbar from './Navbar'
   export default {
     name: "Home",
     components: {
