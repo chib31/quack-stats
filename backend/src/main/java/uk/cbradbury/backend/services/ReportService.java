@@ -1,7 +1,7 @@
-package com.cbradbury.yaca.services;
+package uk.cbradbury.backend.services;
 
-import com.cbradbury.yaca.entities.Report;
-import com.cbradbury.yaca.enumerations.*;
+import uk.cbradbury.backend.entities.Report;
+import uk.cbradbury.backend.enumerations.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.cbradbury.yaca.enumerations.ColumnType.*;
+import static uk.cbradbury.backend.enumerations.ColumnType.*;
 
 @Service
 public class ReportService {

@@ -1,8 +1,8 @@
-package com.cbradbury.yaca.utils;
+package uk.cbradbury.backend.utils;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import static com.cbradbury.yaca.enumerations.Column.*;
+import static uk.cbradbury.backend.enumerations.Column.*;
 
 public class DataModifier {
 

@@ -1,4 +1,4 @@
-package com.cbradbury.yaca.enumerations;
+package uk.cbradbury.backend.enumerations;
 
 public enum DisplayType {
   ALWAYS_SHOW,

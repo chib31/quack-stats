@@ -1,4 +1,4 @@
-package com.cbradbury.yaca.entities;
+package uk.cbradbury.backend.entities;
 
 import lombok.Data;
 

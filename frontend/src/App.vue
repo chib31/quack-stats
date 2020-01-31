@@ -1,23 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div id="nav">
+      <router-link to="/">Hello</router-link> |
+      <router-link to="/callservice">Service</router-link> |
+      <router-link to="/bootstrap">Bootstrap</router-link> |
+      <router-link to="/user">User</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/protected">Protected</router-link>
+    </div>
+    <router-view :hellomsg="msg"></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  export default {
+    name: 'app',
+    data () {
+      return {
+        msg: 'Welcome to your Vue.js powered Spring Boot App'
+      }
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import './assets/custom-vars.scss';
+  
+  @import "../node_modules/bootstrap/scss/bootstrap";
+  @import '../node_modules/bootstrap-vue/src/index.scss';
 </style>

@@ -1,4 +1,4 @@
-package com.cbradbury.yaca.enumerations;
+package uk.cbradbury.backend.enumerations;
 
 import java.util.List;
 

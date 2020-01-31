@@ -1,13 +1,13 @@
-package com.cbradbury.yaca.enumerations;
+package uk.cbradbury.backend.enumerations;
 
-import com.cbradbury.yaca.utils.DataModifier;
-import com.cbradbury.yaca.utils.Utils;
+import uk.cbradbury.backend.utils.DataModifier;
+import uk.cbradbury.backend.utils.Utils;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import static com.cbradbury.yaca.enumerations.AggregateType.*;
-import static com.cbradbury.yaca.enumerations.ColumnType.*;
-import static com.cbradbury.yaca.enumerations.DisplayType.*;
-import static com.cbradbury.yaca.enumerations.FilterType.*;
+import static uk.cbradbury.backend.enumerations.AggregateType.*;
+import static uk.cbradbury.backend.enumerations.ColumnType.*;
+import static uk.cbradbury.backend.enumerations.DisplayType.*;
+import static uk.cbradbury.backend.enumerations.FilterType.*;
 
 public enum Column {
   PLAYER_NAME(

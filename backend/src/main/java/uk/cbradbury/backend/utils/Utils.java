@@ -1,8 +1,8 @@
-package com.cbradbury.yaca.utils;
+package uk.cbradbury.backend.utils;
 
-import com.cbradbury.yaca.enumerations.Column;
-import com.cbradbury.yaca.enumerations.Result;
-import com.cbradbury.yaca.enumerations.WicketType;
+import uk.cbradbury.backend.enumerations.Column;
+import uk.cbradbury.backend.enumerations.Result;
+import uk.cbradbury.backend.enumerations.WicketType;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
