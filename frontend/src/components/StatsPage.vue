@@ -1,51 +1,41 @@
 <template>
   <div>
-    <b-container fluid>
-      <b-row>
-        <b-col cols="auto">
-          <h1 class="ml-2 my-2"> {{ this.statType.title }} </h1>
-        </b-col>
-        <b-col cols="auto" class="flexAlignBottom pl-0">
-          <b-dropdown text="Group By" variant="light" class="ml-0 my-2">
-            <b-dropdown-form>
-              <b-form-group>
-                <b-form-checkbox-group v-model="groupBySelected">
-                  <b-form-checkbox v-for="gOption in groupableColumns" :key="gOption.key" :value="gOption.key">
-                    {{ gOption.label }}
-                  </b-form-checkbox>
-                </b-form-checkbox-group>
-              </b-form-group>
-            </b-dropdown-form>
-          </b-dropdown>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-button-toolbar>
+      <h3 class="mr-2"> {{ toTitleCase(statType) + ' Stats' }} </h3>
+      <b-dropdown text="Group By" variant="light">
+        <b-dropdown-form>
+          <b-form-group>
+            <b-form-checkbox-group v-model="groupBySelected">
+              <b-form-checkbox v-for="gOption in groupableColumns" :key="gOption.key" :value="gOption.key">
+                {{ gOption.label }}
+              </b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+        </b-dropdown-form>
+      </b-dropdown>
+      <b-dropdown text="Choose Columns" variant="light">
+        <b-dropdown-form>
+          <b-form-group>
+            <b-form-checkbox-group v-model="activeColumns">
+              <b-form-checkbox v-for="col in optionalColumns" :key="col.key" :value="col">
+                {{ col.label }}
+              </b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+        </b-dropdown-form>
+      </b-dropdown>
+      <b-button :pressed.sync="showFilters" variant="light">Filter</b-button>
+    </b-button-toolbar>
     <hr class="mt-0 mb-2"/>
-    <b-container fluid>
+    <b-container>
       <b-row class="mt-0 mb-2">
         <b-col cols="auto" class="mt-auto text-dark" v-if="sortColumns.length > 0">
           <h5 class="mr-2 my-0" style="display: inline-block">Sorting by:</h5>
           <span v-for="(col, index) in sortColumns" :key="col.key">
-            <span style="font-weight: bold">{{ col.label}} </span>
-            <span>({{col.sortDirection}})</span>
-            <span v-if="index < sortColumns.length - 1">, </span>
-          </span>
-        </b-col>
-        <b-col cols="auto" class="ml-auto mt-auto">
-          <b-dropdown text="Choose Columns" variant="outline-dark" size="sm" class="mr-2">
-            <b-dropdown-form>
-              <b-form-group>
-                <b-form-checkbox-group v-model="activeColumns">
-                  <b-form-checkbox v-for="col in optionalColumns" :key="col.key" :value="col">
-                    {{ col.label }}
-                  </b-form-checkbox>
-                </b-form-checkbox-group>
-              </b-form-group>
-            </b-dropdown-form>
-          </b-dropdown>
-          <b-button :pressed.sync="showFilters" variant="outline-dark" size="sm">
-            <font-awesome-icon :icon="['fas', 'filter']"/>
-          </b-button>
+          <span style="font-weight: bold">{{ col.label}} </span>
+          <span>({{col.sortDirection}})</span>
+          <span v-if="index < sortColumns.length - 1">, </span>
+        </span>
         </b-col>
       </b-row>
       <b-row>
@@ -61,9 +51,7 @@
               v-on:clearSortPriority="clearSortPriority"/>
         </b-col>
         <b-col cols="3" v-if="showFilters" class="pl-1 pr-2">
-          <stat-filters
-              :filterableColumns="filterableColumns"
-              :rawData="rawData"/>
+          <stat-filters :columns="columns" :rawData="rawData"/>
         </b-col>
       </b-row>
     </b-container>
@@ -75,25 +63,23 @@
   import axios from 'axios'
   import StatsTable from "./StatsTable";
   import StatFilters from "./StatFilters";
-  
+  import {Utils} from "../utils";
+  import config from "../config";
+  import d3 from 'd3';
+
   export default {
     components: {
       StatsTable,
       StatFilters,
     },
     props: {
-      statType: {type: Object},
-    },
-    mounted() {
-      this.initialisePage(this.currentStat);
+      statType: null,
     },
     data() {
       return {
-        backend_url: 'https://cb-heroku.herokuapp.com/api/reports',
         reportInfo: Object,
         columns: [],
         rawData: [],
-        errors: [],
         tableLoading: false,
         showFilters: false,
         currentPage: 1,
@@ -105,13 +91,17 @@
             {value: 99999, text: 'All'}
         ],
         sortColumns: [],
-        activeColumns: [],
         groupBySelected: [],
+        activeColumns: [],
       };
     },
+    mixins: [Utils],
+    mounted() {
+      this.fetchData(this.statType);
+    },
     computed: {
-      currentStat() {
-        return this.statType.key;
+      test() {
+        d3.sum()
       },
       optionalColumns() {
         return this.columns.filter(e => e['displayType'] === 'OPTIONAL_SHOW' || e['displayType'] === 'OPTIONAL_HIDE');
@@ -133,50 +123,40 @@
         result.sort((a, b) => this.sortData(a, b));
         return result;
       },
-      filterableColumns() {
-        return this.columns.filter(e => e['filterType'] != null && ['TEXT', 'NUMBER'].includes(e['filterType']));
-      },
       groupableColumns() {
-        return this.reportInfo['group_options'];
+        return this.columns.filter(e => e['groupable'] === true);
       },
-      groupedColumns() {
-        return d3.nest()
-            .key(function(d) {return d['playerName']})
-            .rollup(v => {return {
-              innings: v.length,
-              runs: d3.sum(v, d => d['runs']),
-              deliveries: d3.sum(v, d => d['deliveries'])
-            }})
-            .entries(this.rawData);
-      }
     },
     watch: {
-      currentStat() {
-        this.initialisePage();
-      },
       groupBySelected() {
-        this.initialisePage();
+        this.fetchData(this.statType);
+      },
+      statType() {
+        this.fetchData(this.statType);
       }
     },
     methods: {
-      
-      initialisePage() {
-        const reportType = this.currentStat;
-        const groupBy = this.groupBySelected.map(e => e.toUpperCase());
-        if(reportType != null) {
-          let groupByString = '';
-          if(groupBy != null && groupBy.length > 0) {
-            groupByString = '&groupBy=' + groupBy.join(',');
+      fetchData(statType) {
+        const app = this;
+
+        // Construct request url
+        if(statType != null) {
+          let url = config.BASE_URL + '/api/reports?reportType=' + statType.toUpperCase();
+
+          // If group by string options are selected then add them as params
+          if (app.groupBySelected.length > 0) {
+            url.concat('&groupBy=').concat(app.groupBySelected.join(',').toUpperCase());
           }
-          this.tableLoading = true;
+
+          // Set status to loading and send request
+          app.tableLoading = true;
           axios.get(
-            this.backend_url + '?reportType=' + reportType + groupByString,
+            url,
             {
-              auth: { username: 'user', password: 'password' },
-              timeout: 5000
+              auth: { username: config.API_USER, password: config.API_PASSWORD },
+              timeout: config.REQUEST_TIMEOUT
             }
           ).catch(error => {
-            this.tableLoading = false;
             if (error.code === 'ECONNABORTED') {
               return 'timeout';
             } else {
@@ -184,18 +164,32 @@
             }
           }).then(response => {
             const responseData = response.data;
-            this.reportInfo = responseData['reportInfo'];
-            this.columns = responseData['columnList'];
-            this.setInitialDisplayColumns();
-            this.setInitialSortColumns();
-            this.rawData = responseData['dataList'];
-            this.getMinMaxValues();
-            this.tableLoading = false;
+
+            // Extract data from response
+            app.reportInfo = responseData['reportInfo'];
+            app.columns = responseData['columnList'];
+            app.rawData = responseData['dataList'];
+
+            // Populate the initially active columns
+            app.setActiveColumns();
+
+            // Populate sort columns array
+            app.setSortColumns();
+
+            // Identify min/max values for each column (needed for filters)
+            app.getMinMaxValues();
+
+          }).finally(function() {
+            app.tableLoading = false;
           });
         }
       },
+      setActiveColumns() {
+        this.activeColumns = [...this.columns
+          .filter(e => e['displayType'] === 'ALWAYS_SHOW' ||  e['displayType'] === 'OPTIONAL_SHOW')];
+      },
       // Constructs initial state of sortColumns array
-      setInitialSortColumns() {
+      setSortColumns() {
         this.sortColumns = [];
         const col1 = this.columns.find(e => e['initialSortOrder'] === 1);
         if (col1 != null) {
@@ -211,13 +205,16 @@
         }
       },
       getMinMaxValues() {
-        for (const col of this.columns.filter(e => e['filterType'] === 'NUMBER')) {
+        for (const col of this.columns.filter(e => e['filterType'] === 'NUM_FILTER')) {
           const key = this.getValueColumnKey(col);
           const min = this.getMinValue(key);
           const max = this.getMaxValue(key);
           Vue.set(col, 'filterConfig', {step: 1, range: {'min': min, 'max': max}});
           Vue.set(col, 'filterRange', [min, max]);
         }
+      },
+      getValueColumnKey(col) {
+        return Object.prototype.hasOwnProperty.call(col, 'valueColumnKey') ? col['valueColumnKey'] : col.key;
       },
       getMinValue(key) {
         const values = this.rawData.map(e => e[key]);
@@ -226,11 +223,6 @@
       getMaxValue(key) {
         const values = this.rawData.map(e => e[key]);
         return Math.max(...values);
-      },
-      setInitialDisplayColumns() {
-        this.activeColumns = this.columns
-            .filter(e => e['displayType'] === 'ALWAYS_SHOW' ||  e['displayType'] === 'OPTIONAL_SHOW')
-            .slice();
       },
       // Compares 2 rows by priority 1, 2 then 3, and returns 1, 0 or -1 depending on result
       sortData(rowA, rowB) {
@@ -323,9 +315,6 @@
       },
       clearSortPriority(key) {
         this.clearSort(this.sortColumns.findIndex(e => e.key === key));
-      },
-      getValueColumnKey(col) {
-        return Object.prototype.hasOwnProperty.call(col, 'valueColumnKey') ? col['valueColumnKey'] : col.key;
       },
     },
   };

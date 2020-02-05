@@ -9,17 +9,17 @@
       <template slot="label">
         <h6 style="display: inline-block" class="mr-1"> {{ column.label }} </h6>
         <b-button @click="clearFilter(column)" size="sm" variant="light" class="p-0 text-secondary" pill>
-          <font-awesome-icon :icon="['far', 'times-circle']"/>
+          <b-icon-x-circle/>
         </b-button>
       </template>
-      <b-input-group v-if="column['filterType'] === 'TEXT'">
+      <b-input-group v-if="column['filterType'] === 'TEXT_FILTER'">
         <b-form-select
             v-model="column['filterValue']"
             :options="Array.from(new Set(rawData.map(e => e[column.key])))"
             size="sm"
             class="mx-2"/>
       </b-input-group>
-      <div v-if="column['filterType'] === 'NUMBER'" class="m-0">
+      <div v-if="column['filterType'] === 'NUM_FILTER'" class="m-0">
         <b-container>
           <b-row>
             <b-col cols="2">
@@ -44,15 +44,14 @@
 
 <script>
   import Nouislider from 'vue-nouislider/src/components/noUiSlider';
-  import Vue from 'vue'
-  
+
   export default {
     name: "StatFilters",
     components: {
       Nouislider,
     },
     props: {
-      filterableColumns: {
+      columns: {
         type: Array,
         required: true,
       },
@@ -60,6 +59,12 @@
         type: Array,
         required: true,
       }
+    },
+    computed: {
+      filterableColumns() {
+        return this.columns
+          .filter(e => e['filterType'] != null && ['TEXT_FILTER', 'NUM_FILTER'].includes(e['filterType']));
+      },
     },
     methods: {
       clearFilter(column) {

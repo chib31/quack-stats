@@ -33,50 +33,50 @@
               striped hover small sort-icon-left no-local-sorting no-sorting
               class="my-0 text-left">
             <template v-slot:head()="displayedColumns">
-            <span class="visibleChildOnHover">
-              <b-button pill
-                        variant="light"
-                        class="py-0 px-1"
-                        style="font-weight: bold; background-color: white; margin-left: -0.2rem;"
-                        :disabled="displayedColumns.field['sortColumn'] !== true"
-                        @click="clickHeader(displayedColumns.field.key)">
-                {{ displayedColumns.field.label }}
-                <font-awesome-icon
-                    v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
-                    :icon="['fas',
-                      sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Asc' ?
-                      'caret-up' : 'caret-down']"/>
-              </b-button>
-              <b-button pill
-                        v-if="sortColumns.length > 1 &&
-                          sortColumns.some(e => e.key === displayedColumns.field.key)"
-                        variant="outline-dark"
-                        size="sm"
-                        class="py-0 px-1"
-                        style="font-weight: bold;"
-                        @click="clickExistingPriority(displayedColumns.field.key)">
-                {{ sortColumns.findIndex(e => e.key === displayedColumns.field.key) + 1 }}
-              </b-button>
-              <b-button pill
-                        v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
-                        variant="outline-secondary"
-                        size="sm"
-                        class="py-0 px-1 ml-1 visibleOnHover"
-                        @click="clearSortPriority(displayedColumns.field.key)">
-                <font-awesome-icon :icon="['fas', 'times']"/>
-              </b-button>
-              <b-button pill
-                        v-if="sortColumns.length > 0 &&
-                          sortColumns.length < 3 &&
-                          displayedColumns.field['sortColumn'] === true &&
-                          !sortColumns.some(e => e.key === displayedColumns.field.key)"
-                        variant="outline-secondary"
-                        size="sm"
-                        class="py-0 px-1 ml-1 visibleOnHover"
-                        @click="clickNextPriority(displayedColumns.field.key)">
-                {{ sortColumns.length + 1 }}
-              </b-button>
-            </span>
+              <span class="visibleChildOnHover">
+                <b-button pill
+                          variant="light"
+                          class="py-0 px-1"
+                          style="font-weight: bold; background-color: white; margin-left: -0.2rem;"
+                          :disabled="displayedColumns.field['sortColumn'] !== true"
+                          @click="clickHeader(displayedColumns.field.key)">
+                  {{ displayedColumns.field.label }}
+                  <span v-if="sortColumns.length > 1 && sortColumns.some(e => e.key === displayedColumns.field.key)">
+                    <b-icon-arrow-up-short
+                      v-if="sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Asc'"/>
+                    <b-icon-arrow-down-short
+                      v-if="sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Desc'"/>
+                  </span>
+                </b-button>
+                <b-button pill
+                          v-if="sortColumns.length > 1 && sortColumns.some(e => e.key === displayedColumns.field.key)"
+                          variant="outline-dark"
+                          size="sm"
+                          class="py-0 px-1"
+                          style="font-weight: bold;"
+                          @click="clickExistingPriority(displayedColumns.field.key)">
+                  {{ sortColumns.findIndex(e => e.key === displayedColumns.field.key) + 1 }}
+                </b-button>
+                <b-button pill
+                          v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
+                          variant="outline-secondary"
+                          size="sm"
+                          class="py-0 px-1 ml-1 visibleOnHover"
+                          @click="clearSortPriority(displayedColumns.field.key)">
+                  <b-icon-x-circle/>
+                </b-button>
+                <b-button pill
+                          v-if="sortColumns.length > 0 &&
+                            sortColumns.length < 3 &&
+                            displayedColumns.field['sortColumn'] === true &&
+                            !sortColumns.some(e => e.key === displayedColumns.field.key)"
+                          variant="outline-secondary"
+                          size="sm"
+                          class="py-0 px-1 ml-1 visibleOnHover"
+                          @click="clickNextPriority(displayedColumns.field.key)">
+                  {{ sortColumns.length + 1 }}
+                </b-button>
+              </span>
             </template>
             <template v-slot:table-busy>
               <div class="text-center text-danger my-2">

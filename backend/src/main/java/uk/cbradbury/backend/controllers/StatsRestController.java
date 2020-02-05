@@ -20,7 +20,6 @@ public class StatsRestController {
   }
 
   @RequestMapping(path = "/reports")
-  @CrossOrigin
   public @ResponseBody
   Report fetchReport(@RequestParam ReportType reportType, @RequestParam(required = false) List<Column> groupBy) {
     return reportService.fetchReport(reportType, groupBy);

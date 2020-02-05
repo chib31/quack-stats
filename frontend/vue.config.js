@@ -15,5 +15,27 @@ module.exports = {
   // Change build paths to make them Maven compatible
   // see https://cli.vuejs.org/config/
   outputDir: 'target/dist',
-  assetsDir: 'static'
+  assetsDir: 'static',
+  runtimeCompiler: true,
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
+      .tap(options => {
+        options.transformAssetUrls = {
+          img: 'src',
+          image: 'xlink:href',
+          'b-img': 'src',
+          'b-img-lazy': ['src', 'blank-src'],
+          'b-card': 'img-src',
+          'b-card-img': 'src',
+          'b-card-img-lazy': ['src', 'blank-src'],
+          'b-carousel-slide': 'img-src',
+          'b-embed': 'src'
+        };
+
+        return options
+      })
+  }
 };

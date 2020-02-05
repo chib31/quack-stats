@@ -1,31 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Hello</router-link> |
-      <router-link to="/callservice">Service</router-link> |
-      <router-link to="/bootstrap">Bootstrap</router-link> |
-      <router-link to="/user">User</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/protected">Protected</router-link>
-    </div>
-    <router-view :hellomsg="msg"></router-view>
+  <div id="app" style="max-width: 70rem" class="ml-auto mr-auto">
+    <navbar/>
+    <b-card>
+      <router-view/>
+    </b-card>
   </div>
 </template>
 
 <script>
+  import Navbar from './components/Navbar';
+
   export default {
     name: 'app',
-    data () {
-      return {
-        msg: 'Welcome to your Vue.js powered Spring Boot App'
-      }
-    }
+    components: {
+      Navbar
+    },
   }
 </script>
 
 <style lang="scss">
   @import './assets/custom-vars.scss';
-  
+
   @import "../node_modules/bootstrap/scss/bootstrap";
   @import '../node_modules/bootstrap-vue/src/index.scss';
 </style>
