@@ -1,5 +1,9 @@
-WITH f AS (INSERT INTO fixture VALUES
-  (default,'2019-05-06',(SELECT id FROM opposition WHERE LOWER(name) LIKE '%clapham%'),2,'Barnes Elms CC','Limited Overs',20,default,FALSE,FALSE,'won')
+WITH t AS (
+  SELECT t.id FROM team t WHERE name = 'Plastics CC'
+),
+
+f AS (INSERT INTO fixture VALUES
+  (default,(SELECT id FROM t),'2019-05-06',(SELECT id FROM team WHERE LOWER(name) LIKE '%clapham%'),2,'Barnes Elms CC','Limited Overs',20,default,FALSE,FALSE,(SELECT id FROM result_type WHERE name = 'won'))
 RETURNING id),
 
 i AS (INSERT INTO innings VALUES
@@ -24,12 +28,12 @@ RETURNING id, player_id),
 smp AS (SELECT sm.id, p.scorecard_name FROM sm JOIN player p ON sm.player_id = p.id),
 
 pbat AS (INSERT INTO player_batting_innings VALUES
-  (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'D Gillan'),1,19,38,6,1,'run_out',null,null,null)
-, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'R Bishop'),2,14,1,0,0,'caught',null,'Stern',null)
-, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'A Mortimer'),3,3,2,0,0,'caught',null,'Stern',null)
-, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'A Webster'),4,34,63,9,2,'not_out',null,null,null)
-, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'B Soomro'),5,15,18,2,0,'lbw',null,'Burgess-Bellay',null)
-, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'J Anderson'),6,7,13,0,1,'not_out',null,null,null)
+  (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'D Gillan'),1,19,38,6,1,(SELECT id FROM batting_conclusion WHERE name = 'run_out'),null,null,null)
+, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'R Bishop'),2,14,1,0,0,(SELECT id FROM batting_conclusion WHERE name = 'caught'),null,'Stern',null)
+, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'A Mortimer'),3,3,2,0,0,(SELECT id FROM batting_conclusion WHERE name = 'caught'),null,'Stern',null)
+, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'A Webster'),4,34,63,9,2,(SELECT id FROM batting_conclusion WHERE name = 'not_out'),null,null,null)
+, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'B Soomro'),5,15,18,2,0,(SELECT id FROM batting_conclusion WHERE name = 'lbw'),null,'Burgess-Bellay',null)
+, (default,(SELECT id FROM i WHERE innings_order = 2),(SELECT id FROM smp WHERE scorecard_name = 'J Anderson'),6,7,13,0,1,(SELECT id FROM batting_conclusion WHERE name = 'not_out'),null,null,null)
 
 
 
@@ -52,13 +56,13 @@ pbowl AS (INSERT INTO player_bowling_innings VALUES
 ),
 
 w AS (INSERT INTO wicket VALUES
-  (default,(SELECT id FROM i WHERE innings_order = 1),'caught',(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),(SELECT id FROM smp WHERE scorecard_name = 'J Papadopoulos'),1,8)
-, (default,(SELECT id FROM i WHERE innings_order = 1),'caught',(SELECT id FROM smp WHERE scorecard_name = 'B Soomro'),(SELECT id FROM smp WHERE scorecard_name = 'P Bishop'),2,6)
-, (default,(SELECT id FROM i WHERE innings_order = 1),'lbw',null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),3,18)
-, (default,(SELECT id FROM i WHERE innings_order = 1),'lbw',null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),4,2)
+  (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'caught'),(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),(SELECT id FROM smp WHERE scorecard_name = 'J Papadopoulos'),1,8)
+, (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'caught'),(SELECT id FROM smp WHERE scorecard_name = 'B Soomro'),(SELECT id FROM smp WHERE scorecard_name = 'P Bishop'),2,6)
+, (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'lbw'),null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),3,18)
+, (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'lbw'),null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),4,2)
 
-, (default,(SELECT id FROM i WHERE innings_order = 1),'bowled',null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),6,4)
-, (default,(SELECT id FROM i WHERE innings_order = 1),'bowled',null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),7,4)
+, (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'bowled'),null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),6,4)
+, (default,(SELECT id FROM i WHERE innings_order = 1),(SELECT id FROM batting_conclusion WHERE name = 'bowled'),null,(SELECT id FROM smp WHERE scorecard_name = 'J Jamieson'),7,4)
 
 
 

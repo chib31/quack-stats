@@ -1,0 +1,25 @@
+1) Raw Data
+
+2) Refined Data (computed)
+	- select filters applied
+	- grouping applied
+
+3) Table Data (data - copies )
+	- range filters applied
+	- sorting applied
+
+
+Select filter options and model are on the raw data.
+Grouping options + model are on the raw data.
+
+I can't use a computed value for Table Data because I need to saved data on it that doesn't apply to the raw data
+
+So - I need a watcher which detects whenever Refined Data changes, then:
+	- copies Refined Data to Table Data
+	- calculates maxRangeLimit and minRangeLimit values for all range filter columns, and add these values to the column on Refined Data
+	- applies sorting to 
+
+
+
+
+

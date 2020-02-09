@@ -21,6 +21,7 @@
     "core-js": "3.6.4",
     "d3": "^5.15.0",
     "jquery": "3.4.1",
+    "supergroup": "^1.1.9",
     "vue": "2.6.11",
     "vue-nouislider": "^1.0.1",
     "vue-router": "3.1.5",

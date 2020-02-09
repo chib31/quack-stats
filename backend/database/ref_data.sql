@@ -1,73 +1,106 @@
-INSERT INTO constant VALUES(default, 'Plastics XI');
+-- Result Types
+INSERT INTO result_type VALUES
+  (default,'won','Won'),
+  (default,'lost','Lost'),
+  (default,'tied','Tied'),
+  (default,'drawn','Drawn'),
+  (default,'na','N/a')
+;
+
+-- Batting Conclusions
+INSERT INTO batting_conclusion VALUES
+  (default,'dnb','DNB',0,0,FALSE,FALSE)
+, (default,'not_out','Not Out',0,1,FALSE,FALSE)
+, (default,'retired','Retired',0,1,FALSE,FALSE)
+, (default,'retired_hurt','Retired Hurt',0,1,FALSE,FALSE)
+, (default,'bowled','Bowled',1,0,TRUE,FALSE)
+, (default,'caught','Caught',1,0,TRUE,TRUE)
+, (default,'hit_twice','Hit Twice',1,0,FALSE,FALSE)
+, (default,'hit_wicket','Hit Wicket',1,0,TRUE,FALSE)
+, (default,'lbw','LBW',1,0,TRUE,FALSE)
+, (default,'obstructing','Obstructing Field',1,0,FALSE,FALSE)
+, (default,'run_out','Run Out',1,0,FALSE,TRUE)
+, (default,'stumped','Stumped',1,0,TRUE,TRUE)
+, (default,'timed_out','Timed Out',1,0,FALSE,FALSE)
+, (default,'other','Other',1,0,FALSE,FALSE)
+;
+
+-- This team (Members as of 12-05-2019)
+WITH this_team AS (
+  INSERT INTO team VALUES (default,'Plastics CC')
+  RETURNING id
+)
+
+INSERT INTO player VALUES
+  (default, (SELECT id FROM this_team), 'Saril', NULL, NULL, NULL, 'Saril', 1, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Jamie', NULL, 'Doy', NULL, 'J Doy', 2, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Robert', NULL, 'Bishop', NULL, 'R Bishop', 3, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Charlie', NULL, 'Bradbury', NULL, 'C Bradbury', 4, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Matt', NULL, 'Webb', NULL, 'M Webb', 5, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Mark', NULL, 'Davies', NULL, 'M Davies', 6, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Peter', NULL, 'Oliver', NULL, 'P Oliver', 7, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Mike', NULL, 'Winter', NULL, 'M Winter', 8, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Niall', NULL, 'Jackson', NULL, 'N Jackson', 9, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Henry', NULL, 'Hobbs', NULL, 'H Hobbs', 10, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'James', NULL, 'Sandham', NULL, 'J Sandham', 11, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Maithri', NULL, 'Jayasuriya', NULL, 'M Jayasuriya', 12, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Alex', NULL, 'Webster', NULL, 'A Webster', 13, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Joey', NULL, 'Anderson', NULL, 'J Anderson', 14, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Leo', NULL, 'Bearcroft', NULL, 'L Bearcroft', 15, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Jerry', NULL, 'Jamieson', NULL, 'J Jamieson', 16, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Simon', NULL, 'Freeman', NULL, 'S Freeman', 17, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Pete', NULL, 'Bishop', NULL, 'P Bishop', 18, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Tom', NULL, 'Morgan-Grenville', NULL, 'T Morgan-Grenville', 19, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Tom', NULL, 'Scott-Coombes', NULL, 'T Scott-Coombes', 20, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'John', NULL, 'Papadopoulos', NULL, 'J Papadopoulos', 21, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Dom', NULL, 'Gillan', NULL, 'D Gillan', 22, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Anthony', NULL, 'Mortimer', NULL, 'A Mortimer', 23, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Phil', NULL, 'Byrne', NULL, 'P Byrne', 24, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'James', NULL, 'Dewhirst', NULL, 'J Dewhirst', 25, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'James', NULL, 'Heis', NULL, 'J Heis', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Billy', NULL, 'Soomro', NULL, 'B Soomro', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Alex', NULL, 'Armytage', NULL, 'A Armytage', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Jon', NULL, 'Thornhill', NULL, 'J Thornhill', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Liam', NULL, 'Killen', NULL, 'L Killen', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Ali', NULL, 'Nurmohammed', NULL, 'A Nurmohammed', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Saj', NULL, 'Ali', NULL, 'S Ali', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Michael', NULL, 'Lizut', NULL, 'M Lizut', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Mike', NULL, 'Wills', NULL, 'M Wills', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Hughie', NULL, 'Jamieson', NULL, 'H Jamieson', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Iain', NULL, 'Gordon', NULL, 'I Gordon', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'James', NULL, 'Jarvis', NULL, 'J Jarvis', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Ian', NULL, 'Whitfield', NULL, 'I Whitfield', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Akhil', NULL, 'Dogar', NULL, 'A Dogar', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Avi', NULL, 'Asthana', NULL, 'A Asthana', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'James', NULL, 'Hewlett', NULL, 'J Hewlett', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Neil', NULL, 'Whitfield', NULL, 'N Whitfield', NULL, NULL, NULL)
+, (default, (SELECT id FROM this_team), 'Rich', NULL, 'Wills', NULL, 'R Wills', NULL, NULL, NULL)
+;
 
 -- Opposition
-INSERT INTO opposition VALUES(default,'Hendricks XI');
-INSERT INTO opposition VALUES(default,'Cumnor Challengers');
-INSERT INTO opposition VALUES(default,'Princes Head CC');
-INSERT INTO opposition VALUES(default,'Holtwhites Trinibis');
-INSERT INTO opposition VALUES(default,'Kings Road');
-INSERT INTO opposition VALUES(default,'Stanmore Warriors');
-INSERT INTO opposition VALUES(default,'Roehampton CC');
-INSERT INTO opposition VALUES(default,'Flying Ducksmen');
-INSERT INTO opposition VALUES(default,'Railway Taverners');
-INSERT INTO opposition VALUES(default,'Crossbats CC');
-INSERT INTO opposition VALUES(default,'Southbank CC');
-INSERT INTO opposition VALUES(default,'Graces');
-INSERT INTO opposition VALUES(default,'Clapham CC');
-INSERT INTO opposition VALUES(default,'Camel CC');
-INSERT INTO opposition VALUES(default,'Egham Roses');
-INSERT INTO opposition VALUES(default,'Gentlemen of West London');
-INSERT INTO opposition VALUES(default,'Norwood Exiles');
-INSERT INTO opposition VALUES(default,'Woodside Green');
-INSERT INTO opposition VALUES(default,'Cincinnati CC');
-INSERT INTO opposition VALUES(default,'Winchmore Hill Tigers');
-INSERT INTO opposition VALUES(default,'Merton Boars');
-INSERT INTO opposition VALUES(default,'Old Minchendenians');
-INSERT INTO opposition VALUES(default,'Mavericks CC');
-
--- Members as of 12-05-2019
-INSERT INTO player VALUES(default,'Saril',null,null,null,'Saril',1,null,null);
-INSERT INTO player VALUES(default,'Jamie',null,'Doy',null,'J Doy',2,null,null);
-INSERT INTO player VALUES(default,'Robert',null,'Bishop',null,'R Bishop',3,null,null);
-INSERT INTO player VALUES(default,'Charlie',null,'Bradbury',null,'C Bradbury',4,null,null);
-INSERT INTO player VALUES(default,'Matt',null,'Webb',null,'M Webb',5,null,null);
-INSERT INTO player VALUES(default,'Mark',null,'Davies',null,'M Davies',6,null,null);
-INSERT INTO player VALUES(default,'Peter',null,'Oliver',null,'P Oliver',7,null,null);
-INSERT INTO player VALUES(default,'Mike',null,'Winter',null,'M Winter',8,null,null);
-INSERT INTO player VALUES(default,'Niall',null,'Jackson',null,'N Jackson',9,null,null);
-INSERT INTO player VALUES(default,'Henry',null,'Hobbs',null,'H Hobbs',10,null,null);
-INSERT INTO player VALUES(default,'James',null,'Sandham',null,'J Sandham',11,null,null);
-INSERT INTO player VALUES(default,'Maithri',null,'Jayasuriya',null,'M Jayasuriya',12,null,null);
-INSERT INTO player VALUES(default,'Alex',null,'Webster',null,'A Webster',13,null,null);
-INSERT INTO player VALUES(default,'Joey',null,'Anderson',null,'J Anderson',14,null,null);
-INSERT INTO player VALUES(default,'Leo',null,'Bearcroft',null,'L Bearcroft',15,null,null);
-INSERT INTO player VALUES(default,'Jerry',null,'Jamieson',null,'J Jamieson',16,null,null);
-INSERT INTO player VALUES(default,'Simon',null,'Freeman',null,'S Freeman',17,null,null);
-INSERT INTO player VALUES(default,'Pete',null,'Bishop',null,'P Bishop',18,null,null);
-INSERT INTO player VALUES(default,'Tom',null,'Morgan-Grenville',null,'T Morgan-Grenville',19,null,null);
-INSERT INTO player VALUES(default,'Tom',null,'Scott-Coombes',null,'T Scott-Coombes',20,null,null);
-INSERT INTO player VALUES(default,'John',null,'Papadopoulos',null,'J Papadopoulos',21,null,null);
-INSERT INTO player VALUES(default,'Dom',null,'Gillan',null,'D Gillan',22,null,null);
-INSERT INTO player VALUES(default,'Anthony',null,'Mortimer',null,'A Mortimer',23,null,null);
-INSERT INTO player VALUES(default,'Phil',null,'Byrne',null,'P Byrne',24,null,null);
-INSERT INTO player VALUES(default,'James',null,'Dewhirst',null,'J Dewhirst',25,null,null);
-
--- Ringers
-INSERT INTO player VALUES(default,'James',null,'Heis',null,'J Heis',null,null,null);
-INSERT INTO player VALUES(default,'Billy',null,'Soomro',null,'B Soomro',null,null,null);
-INSERT INTO player VALUES(default,'Alex',null,'Armytage',null,'A Armytage',null,null,null);
-INSERT INTO player VALUES(default,'Jon',null,'Thornhill',null,'J Thornhill',null,null,null);
-INSERT INTO player VALUES(default,'Liam',null,'Killen',null,'L Killen',null,null,null);
-INSERT INTO player VALUES(default,'Ali',null,'Nurmohammed',null,'A Nurmohammed',null,null,null);
-INSERT INTO player VALUES(default,'Saj',null,'Ali',null,'S Ali',null,null,null);
-INSERT INTO player VALUES(default,'Michael',null,'Lizut',null,'M Lizut',null,null,null);
-INSERT INTO player VALUES(default,'Mike',null,'Wills',null,'M Wills',null,null,null);
-INSERT INTO player VALUES(default,'Hughie',null,'Jamieson',null,'H Jamieson',null,null,null);
-INSERT INTO player VALUES(default,'Iain',null,'Gordon',null,'I Gordon',null,null,null);
-INSERT INTO player VALUES(default,'James',null,'Jarvis',null,'J Jarvis',null,null,null);
-INSERT INTO player VALUES(default,'Ian',null,'Whitfield',null,'I Whitfield',null,null,null);
-INSERT INTO player VALUES(default,'Akhil',null,'Dogar',null,'A Dogar',null,null,null);
-INSERT INTO player VALUES(default,'Avi',null,'Asthana',null,'A Asthana',null,null,null);
-INSERT INTO player VALUES(default,'James',null,'Hewlett',null,'J Hewlett',null,null,null);
-INSERT INTO player VALUES(default,'Neil',null,'Whitfield',null,'N Whitfield',null,null,null);
-INSERT INTO player VALUES(default,'Rich',null,'Wills',null,'R Wills',null,null,null);
+INSERT INTO team
+VALUES
+  (default, 'Hendricks XI')
+, (default, 'Cumnor Challengers')
+, (default, 'Princes Head CC')
+, (default, 'Holtwhites Trinibis')
+, (default, 'Kings Road')
+, (default, 'Stanmore Warriors')
+, (default, 'Roehampton CC')
+, (default, 'Flying Ducksmen')
+, (default, 'Railway Taverners')
+, (default, 'Crossbats CC')
+, (default, 'Southbank CC')
+, (default, 'Graces')
+, (default, 'Clapham CC')
+, (default, 'Camel CC')
+, (default, 'Egham Roses')
+, (default, 'Gentlemen of West London')
+, (default, 'Norwood Exiles')
+, (default, 'Woodside Green')
+, (default, 'Cincinnati CC')
+, (default, 'Winchmore Hill Tigers')
+, (default, 'Merton Boars')
+, (default, 'Old Minchendenians')
+, (default, 'Mavericks CC')
+;

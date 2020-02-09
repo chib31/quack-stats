@@ -65,7 +65,8 @@
   import StatFilters from "./StatFilters";
   import {Utils} from "../utils";
   import config from "../config";
-  import d3 from 'd3';
+  import * as d3 from 'd3';
+  import sg from 'supergroup';
 
   export default {
     components: {
@@ -101,7 +102,8 @@
     },
     computed: {
       test() {
-        d3.sum()
+        let s = sg.supergroup(this.rawData, ['scorecard_name']);
+        return s.map(e => this.processSgRow(e));
       },
       optionalColumns() {
         return this.columns.filter(e => e['displayType'] === 'OPTIONAL_SHOW' || e['displayType'] === 'OPTIONAL_HIDE');
@@ -141,12 +143,7 @@
 
         // Construct request url
         if(statType != null) {
-          let url = config.BASE_URL + '/api/reports?reportType=' + statType.toUpperCase();
-
-          // If group by string options are selected then add them as params
-          if (app.groupBySelected.length > 0) {
-            url.concat('&groupBy=').concat(app.groupBySelected.join(',').toUpperCase());
-          }
+          const url = config.BASE_URL + '/' + config.STATS_API_PATH + statType.toUpperCase();
 
           // Set status to loading and send request
           app.tableLoading = true;
@@ -315,6 +312,22 @@
       },
       clearSortPriority(key) {
         this.clearSort(this.sortColumns.findIndex(e => e.key === key));
+      },
+      processSgRow(row) {
+        console.log(row);
+        let result = {};
+        result[row.dim] = row.valueOf();
+        result['innings'] = row.records.length;
+        result['runs'] = row.aggregate(d3.sum, 'runs');
+        result['deliveries'] = row.aggregate(d3.sum, 'deliveries');
+        result['fours'] = row.aggregate(d3.sum, 'fours');
+        result['sixes'] = row.aggregate(d3.sum, 'sixes');
+        result['wickets'] = row.aggregate(d3.sum, 'wicket');
+        result['avg_position'] = row.aggregate(d3.mean, 'position');
+        result['average'] = row.aggregate(d3.sum, 'runs') / row.aggregate(d3.sum, 'wicket');
+        result['top_score'] = row.aggregate(d3.max, 'runs');
+        result['lowest_score'] = row.aggregate(d3.min, 'runs');
+        return result;
       },
     },
   };

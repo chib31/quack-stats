@@ -1,27 +1,24 @@
 package uk.cbradbury.backend.controllers;
 
-import uk.cbradbury.backend.entities.Report;
-import uk.cbradbury.backend.enumerations.Column;
-import uk.cbradbury.backend.enumerations.ReportType;
-import uk.cbradbury.backend.services.ReportService;
+import uk.cbradbury.backend.entities.StatResponse;
+import uk.cbradbury.backend.enumerations.StatType;
+import uk.cbradbury.backend.services.StatsService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController()
 @CrossOrigin(maxAge = 3600)
 @RequestMapping("/api")
 public class StatsRestController {
 
-  private final ReportService reportService;
+  private final StatsService statsService;
 
-  public StatsRestController(ReportService reportService) {
-    this.reportService = reportService;
+  public StatsRestController(StatsService statsService) {
+    this.statsService = statsService;
   }
 
-  @RequestMapping(path = "/reports")
+  @RequestMapping(path = "/stats")
   public @ResponseBody
-  Report fetchReport(@RequestParam ReportType reportType, @RequestParam(required = false) List<Column> groupBy) {
-    return reportService.fetchReport(reportType, groupBy);
+  StatResponse fetchReport(@RequestParam StatType statType) {
+    return statsService.fetchStats(statType);
   }
 }

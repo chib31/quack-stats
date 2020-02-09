@@ -1,11 +1,8 @@
 package uk.cbradbury.backend.utils;
 
-import uk.cbradbury.backend.enumerations.Column;
-import uk.cbradbury.backend.enumerations.Result;
-import uk.cbradbury.backend.enumerations.WicketType;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
+import uk.cbradbury.backend.enumerations.WicketType;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,20 +15,6 @@ public class Utils {
   public static WicketType getWicketTypeFromSql(String sqlType) {
     return Arrays.stream(WicketType.values())
                .filter(e -> e.getSqlType().equals(sqlType))
-               .findAny()
-               .orElseThrow();
-  }
-
-  public static ObjectNode transformWicketType(ObjectNode on) {
-    String key = Column.WICKET_TYPE.key;
-    String oldValue = on.get(key).textValue();
-    String newValue = getWicketTypeFromSql(oldValue).toString();
-    return on.put(key, newValue);
-  }
-
-  public static Result getResultFromSql(String sqlResult) {
-    return Arrays.stream(Result.values())
-               .filter(e -> e.getSqlResult().equals(sqlResult))
                .findAny()
                .orElseThrow();
   }

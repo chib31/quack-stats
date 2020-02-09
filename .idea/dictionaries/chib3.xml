@@ -2,7 +2,9 @@
   <dictionary name="chib3">
     <words>
       <w>axios</w>
+      <w>groupable</w>
       <w>navbar</w>
+      <w>stumpings</w>
     </words>
   </dictionary>
 </component>
