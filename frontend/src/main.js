@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
 import App from './App.vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import StatsPage from "./components/StatsPage";
@@ -16,10 +16,36 @@ Vue.use(IconsPlugin);
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: HomePage },
-  { path: '/results', component: ResultsPage },
-  { path: '/players', component: PlayersPage },
-  { path: '/stats/:statType', component: StatsPage, props: true },
+  {
+    path: '/',
+    component: HomePage,
+    meta: {
+      auth: false,
+      title: '',
+    },
+  }, {
+    path: '/results',
+    component: ResultsPage,
+    meta: {
+      auth: false,
+      title: 'Results',
+    },
+  }, {
+    path: '/players',
+    component: PlayersPage,
+    meta: {
+      auth: false,
+      title: 'Players',
+    },
+  }, {
+    path: '/stats/:statType',
+    component: StatsPage,
+    props: true,
+    meta: {
+      auth: false,
+      title: 'Stats',
+    },
+  },
 ];
 
 const router = new VueRouter({

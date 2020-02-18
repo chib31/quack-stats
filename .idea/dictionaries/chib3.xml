@@ -4,7 +4,9 @@
       <w>axios</w>
       <w>groupable</w>
       <w>navbar</w>
+      <w>nouislider</w>
       <w>stumpings</w>
+      <w>viewability</w>
     </words>
   </dictionary>
 </component>

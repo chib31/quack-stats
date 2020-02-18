@@ -2,66 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="669c149e-5f41-45d3-8ea1-993bb5ed36b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/EnumCreator.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/column_meta.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/database/DB_ERD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/database/setup_sba_views.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/StatColumn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/StatType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/Grouped.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/update_column_enum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/Calculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/chib3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/chib3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/camel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/camel.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/cincinnati.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/cincinnati.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/clapham_cc.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/clapham_cc.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/crossbats.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/crossbats.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/crossbats_2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/crossbats_2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/cumnor_challengers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/cumnor_challengers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/egham_roses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/egham_roses.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/flying_ducksmen.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/flying_ducksmen.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/gowl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/gowl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/graces.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/graces.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/hendricks.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/hendricks.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/holtwhites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/holtwhites.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/kings_road.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/kings_road.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/mavericks.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/mavericks.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/merton_boars.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/merton_boars.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/norwood.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/norwood.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/omcc.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/omcc.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/princes_head.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/princes_head.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/railway_taverners.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/railway_taverners.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/railway_taverners_2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/railway_taverners_2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/winchmore_hill_tigers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/winchmore_hill_tigers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/FixturePatches/woodside_green.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/FixturePatches/woodside_green.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/TablesDiagram.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/ref_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/ref_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/setup.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database/setup_views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/setup_info_views.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/controllers/StatsRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/controllers/StatsRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/StatResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/AggregateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/AggregateType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/EnumCreator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/EnumCreator.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/column_meta.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backend/column_meta.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/setup_sba_views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/setup_sba_views.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/StatColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/entities/StatColumn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/ColumnType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/ValueType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/DisplayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/VisibilityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/FilterType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/FilterType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/ReportType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/ResultType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/SortType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/SortType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/services/StatsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/utils/DataModifier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/StatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/StatType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/ValueType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/VisibilityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/enumerations/column_meta/Viewability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/services/StatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/services/StatsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/StatsPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/StatsPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/StatsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/StatsTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/e2e/custom-assertions/elementCount.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/e2e/nightwatch.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/e2e/runner.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/e2e/specs/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/unit/.eslintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/unit/jest.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/unit/setup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/unit/specs/HelloWorld.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,36 +63,6 @@
         <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
     </expand>
     <select />
   </component>
@@ -137,9 +78,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
-        <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -190,14 +131,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Set Language" value="csv" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -205,9 +148,17 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PostgreSQL" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.CSV/TSV/PSV" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chib3\projects\quackstats\frontend" />
+      <recent name="C:\Users\chib3\projects\quackstats\backend" />
+      <recent name="C:\Users\chib3\projects\quackstats" />
+      <recent name="C:\Users\chib3\projects\quackstats\backend\database" />
+      <recent name="C:\Users\chib3\projects\quackstats\backend\src\main\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\chib3\projects\quackstats\backend" />
       <recent name="C:\Users\chib3\projects\quackstats\backend\src\main\resources" />
@@ -215,15 +166,8 @@
       <recent name="C:\Users\chib3\projects\quackstats\frontend" />
       <recent name="C:\Users\chib3\projects\quackstats\frontend\public" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\chib3\projects\quackstats" />
-      <recent name="C:\Users\chib3\projects\quackstats\backend\database" />
-      <recent name="C:\Users\chib3\projects\quackstats\backend" />
-      <recent name="C:\Users\chib3\projects\quackstats\backend\src\main\resources" />
-      <recent name="C:\Users\chib3\projects\quackstats\frontend\src\assets" />
-    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
+  <component name="RunManager" selected="Compound.Backend+Frontend">
     <configuration name="Backend+Frontend" type="CompoundRunConfigurationType">
       <toRun name="serve" type="js.build_tools.npm" />
       <toRun name="BackendApplication" type="SpringBootApplicationConfigurationType" />
@@ -234,7 +178,61 @@
       <toRun name="BackendApplication" type="SpringBootApplicationConfigurationType" />
       <method v="2" />
     </configuration>
-    <configuration name="update_column_enum (1)" type="ShConfigurationType" activateToolWindowBeforeRun="false" temporary="true">
+    <configuration name="HelloWorld.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/frontend/test/unit/specs/HelloWorld.spec.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StatsPage.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/frontend/test/unit/specs/StatsPage.spec.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StatsPage.vue.should render correct contents" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/test/unit/specs/StatsPage.spec.js" />
+      <test-names>
+        <test-name value="StatsPage.vue" />
+        <test-name value="should render correct contents" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="trial.spec.js (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/frontend/trial.spec.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trial.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/@vue/cli-service" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/frontend/test/unit/specs/trial.spec.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="update_column_enum (1)" type="ShConfigurationType">
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/backend/update_column_enum" />
       <option name="SCRIPT_OPTIONS" value="" />
       <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
@@ -242,7 +240,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="update_column_enum" type="ShConfigurationType" temporary="true">
+    <configuration name="update_column_enum" type="ShConfigurationType" activateToolWindowBeforeRun="false" temporary="true">
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/backend/update_column_enum" />
       <option name="SCRIPT_OPTIONS" value="" />
       <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
@@ -280,15 +278,23 @@
     </configuration>
     <list>
       <item itemvalue="Compound.Backend+Frontend" />
+      <item itemvalue="Jest.HelloWorld.spec.js" />
+      <item itemvalue="Jest.StatsPage.spec.js" />
+      <item itemvalue="Jest.StatsPage.vue.should render correct contents" />
+      <item itemvalue="Jest.trial.spec.js" />
+      <item itemvalue="Jest.trial.spec.js (1)" />
       <item itemvalue="npm.serve" />
-      <item itemvalue="Shell Script.update_column_enum" />
       <item itemvalue="Shell Script.update_column_enum (1)" />
+      <item itemvalue="Shell Script.update_column_enum" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.update_column_enum (1)" />
-        <item itemvalue="Shell Script.update_column_enum" />
+        <item itemvalue="Jest.StatsPage.spec.js" />
+        <item itemvalue="Jest.trial.spec.js" />
+        <item itemvalue="Jest.trial.spec.js (1)" />
+        <item itemvalue="Jest.StatsPage.vue.should render correct contents" />
+        <item itemvalue="Jest.HelloWorld.spec.js" />
       </list>
     </recent_temporary>
   </component>
@@ -305,7 +311,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:postgres@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@3c3e38ed" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@cc75f5f" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -346,7 +352,16 @@
       <workItem from="1581034791904" duration="3231000" />
       <workItem from="1581178162757" duration="5024000" />
       <workItem from="1581195440367" duration="16502000" />
-      <workItem from="1581249746165" duration="34932000" />
+      <workItem from="1581249746165" duration="35765000" />
+      <workItem from="1581370996041" duration="13506000" />
+      <workItem from="1581454032922" duration="12080000" />
+      <workItem from="1581545906636" duration="3865000" />
+      <workItem from="1581635561811" duration="2569000" />
+      <workItem from="1581770420480" duration="29558000" />
+      <workItem from="1581859931609" duration="7143000" />
+      <workItem from="1581869841415" duration="20675000" />
+      <workItem from="1581977209166" duration="701000" />
+      <workItem from="1581982212455" duration="2399000" />
     </task>
     <servers />
   </component>
@@ -357,104 +372,128 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="957" y="382" key="#HelloWorld.spec.js" timestamp="1581895468722">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="957" y="382" key="#HelloWorld.spec.js/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581895468722" />
     <state x="415" y="240" key="#Plugins" timestamp="1581034777013">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="415" y="240" key="#Plugins/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581034777013" />
-    <state x="734" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581287855568">
+    <state x="734" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581787683971">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="734" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581287855568" />
+    <state x="734" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581787683971" />
     <state x="1005" y="504" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581206990923">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1005" y="504" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581206990923" />
-    <state x="1085" y="417" key="#com.intellij.ide.util.MemberChooser" timestamp="1581288038220">
+    <state x="1085" y="417" key="#com.intellij.ide.util.MemberChooser" timestamp="1581865514004">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1085" y="417" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581288038220" />
-    <state x="716" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581281387993">
+    <state x="1085" y="417" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581865514004" />
+    <state x="716" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581787541944">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="716" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581281387993" />
+    <state x="716" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581787541944" />
     <state x="1010" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580663472324">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1580663472324" />
-    <state x="1078" y="403" key="ExecutionTargetDialog" timestamp="1581291664358">
+    <state x="999" y="434" key="#update_column_enum_(1)" timestamp="1581454772649">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1078" y="403" key="ExecutionTargetDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291664358" />
+    <state x="999" y="434" key="#update_column_enum_(1)/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581454772649" />
+    <state x="1078" y="403" key="ExecutionTargetDialog" timestamp="1581821411483">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1078" y="403" key="ExecutionTargetDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581821411483" />
     <state x="995" y="369" key="FileChooserDialogImpl" timestamp="1581180285555">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="995" y="369" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581035237648" />
     <state x="995" y="369" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1581180285555" />
-    <state width="1741" height="401" key="GridCell.Tab.0.bottom" timestamp="1581291639402">
+    <state width="2517" height="317" key="GridCell.Tab.0.bottom" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1741" height="401" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291639402" />
-    <state width="1741" height="401" key="GridCell.Tab.0.center" timestamp="1581291639402">
+    <state width="2517" height="317" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.0.center" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1741" height="401" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291639402" />
-    <state width="1741" height="401" key="GridCell.Tab.0.left" timestamp="1581291639402">
+    <state width="2517" height="317" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.0.left" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1741" height="401" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291639402" />
-    <state width="1741" height="401" key="GridCell.Tab.0.right" timestamp="1581291639402">
+    <state width="2517" height="317" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.0.right" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1741" height="401" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291639402" />
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1581291631357">
+    <state width="2517" height="317" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.1.bottom" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1581291631357">
+    <state width="2517" height="317" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.1.center" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1581291631357">
+    <state width="2517" height="317" key="GridCell.Tab.1.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.1.left" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1581291631357">
+    <state width="2517" height="317" key="GridCell.Tab.1.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="317" key="GridCell.Tab.1.right" timestamp="1581982452286">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.2.bottom" timestamp="1581291631358">
+    <state width="2517" height="317" key="GridCell.Tab.1.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581982452286" />
+    <state width="2517" height="492" key="GridCell.Tab.2.bottom" timestamp="1581897490729">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.2.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631358" />
-    <state width="2517" height="492" key="GridCell.Tab.2.center" timestamp="1581291631357">
+    <state width="2517" height="492" key="GridCell.Tab.2.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581897490729" />
+    <state width="2517" height="492" key="GridCell.Tab.2.center" timestamp="1581897490728">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.2.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.2.left" timestamp="1581291631357">
+    <state width="2517" height="492" key="GridCell.Tab.2.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581897490728" />
+    <state width="2517" height="492" key="GridCell.Tab.2.left" timestamp="1581897490728">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.2.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631357" />
-    <state width="2517" height="492" key="GridCell.Tab.2.right" timestamp="1581291631358">
+    <state width="2517" height="492" key="GridCell.Tab.2.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581897490728" />
+    <state width="2517" height="492" key="GridCell.Tab.2.right" timestamp="1581897490728">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.2.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581291631358" />
-    <state x="1055" y="412" key="RollbackChangesDialog" timestamp="1581214026776">
+    <state width="2517" height="492" key="GridCell.Tab.2.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581897490728" />
+    <state width="2517" height="492" key="GridCell.Tab.3.bottom" timestamp="1581821881580">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1055" y="412" key="RollbackChangesDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581214026776" />
-    <state x="-6" y="163" width="998" height="1103" key="SettingsEditor" timestamp="1581263797480">
+    <state width="2517" height="492" key="GridCell.Tab.3.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581821881580" />
+    <state width="2517" height="492" key="GridCell.Tab.3.center" timestamp="1581821881580">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="-6" y="163" width="1274" height="713" key="SettingsEditor/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581263797480" />
+    <state width="2517" height="492" key="GridCell.Tab.3.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581821881580" />
+    <state width="2517" height="492" key="GridCell.Tab.3.left" timestamp="1581821881580">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581821881580" />
+    <state width="2517" height="492" key="GridCell.Tab.3.right" timestamp="1581821881580">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581821881580" />
+    <state x="1055" y="412" key="RollbackChangesDialog" timestamp="1581863551279">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1055" y="412" key="RollbackChangesDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581863551279" />
+    <state x="876" y="313" width="998" height="1103" key="SettingsEditor" timestamp="1581870957763">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="876" y="313" width="1274" height="713" key="SettingsEditor/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581870957763" />
     <state x="318" y="192" width="998" height="1103" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1581251885699" />
-    <state x="1001" y="441" width="540" height="524" key="StructurePopup" timestamp="1581035690071">
+    <state x="1001" y="441" width="540" height="524" key="StructurePopup" timestamp="1581872300209">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1001" y="441" width="540" height="524" key="StructurePopup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581035690071" />
-    <state width="498" height="477" key="SwitcherDM" timestamp="1581277157547">
+    <state x="1001" y="441" width="540" height="524" key="StructurePopup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581872300209" />
+    <state width="498" height="517" key="SwitcherDM" timestamp="1581864460177">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="498" height="477" key="SwitcherDM/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581277157547" />
+    <state width="498" height="517" key="SwitcherDM/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581864460177" />
     <state x="1103" y="401" width="326" height="238" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1581278173913">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -463,18 +502,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="641" y="202" key="com.intellij.database.run.actions.ShowCsvFormatsAction/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581034843977" />
-    <state x="924" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581211326522">
+    <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581872453667">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="924" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581211326522" />
-    <state x="781" y="300" width="1456" height="688" key="editAsTableFormatDialogDimension" timestamp="1581277167264">
+    <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581872453667" />
+    <state x="924" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581897183767">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="781" y="300" width="1456" height="688" key="editAsTableFormatDialogDimension/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581277167264" />
-    <state x="343" y="432" width="737" height="606" key="find.popup" timestamp="1581262609251">
+    <state x="924" y="316" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581897183767" />
+    <state x="255" y="261" width="2253" height="688" key="editAsTableFormatDialogDimension" timestamp="1581818585803">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="343" y="432" width="737" height="606" key="find.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581262609251" />
+    <state x="255" y="261" width="2253" height="688" key="editAsTableFormatDialogDimension/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581818585803" />
+    <state x="344" y="432" width="737" height="606" key="find.popup" timestamp="1581983265163">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="344" y="432" width="737" height="606" key="find.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581983265163" />
     <state x="662" y="425" key="new project wizard" timestamp="1580843710042">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -483,20 +526,23 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1576" y="334" key="run.anything.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581278851251" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1581211657426">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1581870874869">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581211657426" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1581870874869" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/backend/src/main/java/uk/cbradbury/backend/services/StatsService.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/components/StatsPage.vue</url>
+          <line>277</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/quackstats$StatsPage_spec_js.info" NAME="StatsPage.spec.js Coverage Results" MODIFIED="1581897458573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

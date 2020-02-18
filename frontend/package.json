@@ -4,12 +4,10 @@
   "description": "A Vue.js project",
   "author": "chib31 <chib31@outlook.com>",
   "private": true,
+  "title": "Plastics CC",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
     "serve": "vue-cli-service serve"
@@ -21,6 +19,7 @@
     "core-js": "3.6.4",
     "d3": "^5.15.0",
     "jquery": "3.4.1",
+    "lodash": "^4.17.15",
     "supergroup": "^1.1.9",
     "vue": "2.6.11",
     "vue-nouislider": "^1.0.1",
@@ -46,35 +45,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.vue$": "vue-jest",
-      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "testMatch": [
-      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
-    ],
-    "testURL": "http://localhost/",
-    "coverageDirectory": "<rootDir>/tests/unit/coverage",
-    "collectCoverageFrom": [
-      "src/**/*.{js,vue}",
-      "!src/main.js",
-      "!src/router.js",
-      "!**/node_modules/**"
-    ]
-  }
+  ]
 }

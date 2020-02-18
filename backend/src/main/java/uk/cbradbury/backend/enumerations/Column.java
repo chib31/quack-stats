@@ -2,78 +2,89 @@ package uk.cbradbury.backend.enumerations;
 
 import uk.cbradbury.backend.enumerations.column_meta.*;
 
+import uk.cbradbury.backend.entities.Calculation;
+
 import static uk.cbradbury.backend.enumerations.column_meta.AggregateType.*;
-import static uk.cbradbury.backend.enumerations.column_meta.Grouped.*;
 import static uk.cbradbury.backend.enumerations.column_meta.SortType.*;
-import static uk.cbradbury.backend.enumerations.column_meta.ValueType.*;
-import static uk.cbradbury.backend.enumerations.column_meta.VisibilityType.*;
+import static uk.cbradbury.backend.enumerations.column_meta.Viewability.*;
 import static uk.cbradbury.backend.enumerations.column_meta.FilterType.*;
 
 public enum Column { 
 
-  AVERAGE_BAT("average_bat",null,null,ALWAYS_HIDE,null,DESC,NEVER_GROUP,COMPLEX,"Average",OPTIONAL_SHOW),
-  AVERAGE_BOWL("average_bowl","Average",DERIVED,OPTIONAL_SHOW,null,ASC,NEVER_GROUP,COMPLEX,"Average",OPTIONAL_SHOW),
-  BOWLER_NUMBER("bowler_number","Bowler Number",RAW,OPTIONAL_HIDE,SELECT_FILTER,ASC,GROUP_OFF,MEAN,"Avg Bowler Number",OPTIONAL_HIDE),
-  CATCHES("catches","Catches",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Catches",OPTIONAL_SHOW),
-  DATE("date","Date",RAW,OPTIONAL_HIDE,null,DESC,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  DELIVERIES("deliveries","Deliveries",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Deliveries",OPTIONAL_SHOW),
-  ECONOMY("economy","Economy",DERIVED,OPTIONAL_SHOW,RANGE_FILTER,ASC,NEVER_GROUP,COMPLEX,"Economy",OPTIONAL_SHOW),
-  FIELDING_MATCHES("fielding_matches","Matches",RAW,ALWAYS_HIDE,null,ASC,NEVER_GROUP,SUM,"Matches",OPTIONAL_SHOW),
-  FIELDING_WICKETS("fielding_wickets","Fielding Wickets",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Fielding Wickets",OPTIONAL_SHOW),
-  FIXTURE("fixture","Fixture",DERIVED,OPTIONAL_SHOW,null,null,GROUP_OFF,null,null,ALWAYS_HIDE),
-  FOURS("fours","Fours",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Fours",OPTIONAL_SHOW),
-  GROUP_TERM("group_term",null,null,ALWAYS_HIDE,null,null,NEVER_GROUP,null,"GROUP_TERM",ALWAYS_SHOW),
-  HAT_TRICKS("hat_tricks","Hat Tricks",RAW,OPTIONAL_HIDE,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Hat Tricks",OPTIONAL_HIDE),
-  ID("id",null,RAW,ALWAYS_HIDE,null,null,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  INDEX("index","#",null,ALWAYS_SHOW,null,null,NEVER_GROUP,null,"#",ALWAYS_SHOW),
-  INNINGS("innings",null,RAW,ALWAYS_HIDE,null,DESC,NEVER_GROUP,SUM,"Innings",OPTIONAL_SHOW),
-  INNINGS_LENGTH("innings_length","Innings Length",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  MAIDENS("maidens","Maidens",RAW,OPTIONAL_HIDE,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Maidens",OPTIONAL_HIDE),
-  MATCH_FORMAT("match_format","Match Format",RAW,OPTIONAL_HIDE,SELECT_FILTER,null,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  NOT_OUTS("not_outs",null,RAW,ALWAYS_HIDE,null,null,NEVER_GROUP,SUM,"Not Outs",OPTIONAL_HIDE),
-  NO_BALLS("no_balls","No Balls",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"No Balls",OPTIONAL_HIDE),
-  OPPOSITION("opposition","Opposition",RAW,OPTIONAL_HIDE,SELECT_FILTER,null,GROUP_OFF,null,null,ALWAYS_HIDE),
-  OVERS("overs","Overs",DERIVED,OPTIONAL_HIDE,null,null,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  OVER_LENGTH("over_length","Over Length",RAW,OPTIONAL_HIDE,null,null,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  PERCENT_TOTAL("percent_total","% of Total",DERIVED,OPTIONAL_HIDE,RANGE_FILTER,DESC,NEVER_GROUP,COMPLEX,"Avg % of Total",OPTIONAL_HIDE),
-  PLAYER_NAME("player_name","Name",RAW,ALWAYS_SHOW,SELECT_FILTER,ASC,GROUP_OFF,null,null,ALWAYS_HIDE),
-  POSITION("position","Position",RAW,OPTIONAL_HIDE,SELECT_FILTER,ASC,GROUP_OFF,MEAN,"Avg Position",OPTIONAL_HIDE),
-  RESULT("result","Result",RAW,OPTIONAL_HIDE,SELECT_FILTER,null,GROUP_OFF,null,null,ALWAYS_HIDE),
-  RUNS("runs","Runs",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Runs",OPTIONAL_SHOW),
-  RUN_OUTS("run_outs","Run Outs",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Run Outs",OPTIONAL_SHOW),
-  SEASON("season","Season",RAW,OPTIONAL_HIDE,SELECT_FILTER,DESC,GROUP_OFF,null,null,ALWAYS_HIDE),
-  SIXES("sixes","Sixes",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Sixes",OPTIONAL_SHOW),
-  STRIKE_RATE_BAT("strike_rate_bat","Strike Rate",DERIVED,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,COMPLEX,"Strike Rate",OPTIONAL_SHOW),
-  STRIKE_RATE_BOWL("strike_rate_bowl","Strike Rate",DERIVED,OPTIONAL_SHOW,RANGE_FILTER,ASC,NEVER_GROUP,COMPLEX,"Strike Rate",OPTIONAL_SHOW),
-  STUMPINGS("stumpings","Stumpings",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Stumpings",OPTIONAL_SHOW),
-  TEAM_TOTAL("team_total","Team Total",RAW,OPTIONAL_HIDE,null,null,NEVER_GROUP,null,null,ALWAYS_HIDE),
-  WICKETS_BATTING("wickets_batting",null,RAW,ALWAYS_HIDE,null,null,NEVER_GROUP,SUM,"Wickets",OPTIONAL_SHOW),
-  WICKETS_BOWLING("wickets_bowling","Wickets",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Wickets",OPTIONAL_SHOW),
-  WICKET_TYPE("wicket_type","Wicket Type",RAW,OPTIONAL_SHOW,SELECT_FILTER,null,GROUP_OFF,MODE,"MCD",OPTIONAL_HIDE),
-  WIDES("wides","Wides",RAW,OPTIONAL_SHOW,RANGE_FILTER,DESC,NEVER_GROUP,SUM,"Wides",OPTIONAL_HIDE);
+  BOWLER_NUMBER("bowler_number","Bowler Number",true,OPTIONAL,false,SELECT_FILTER,ASC,"dec2NoTrail",true,false,"Avg Bowler Number",MEAN,null,OPTIONAL,false),
+  CATCHES("catches","Catches",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Catches",SUM,null,OPTIONAL,true),
+  DATE("date","Date",true,OPTIONAL,false,null,DESC,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  DELIVERIES("deliveries","Deliveries",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Deliveries",SUM,null,OPTIONAL,true),
+  FIELDING_MATCHES("fielding_matches","Matches",true,ALWAYS_HIDE,false,null,ASC,null,false,false,"Matches",SUM,null,OPTIONAL,true),
+  FIELDING_WICKETS("fielding_wickets","Wickets",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Wickets",SUM,null,OPTIONAL,true),
+  FIXTURE("fixture","Fixture",true,OPTIONAL,true,null,null,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  FOURS("fours","Fours",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Fours",SUM,null,OPTIONAL,true),
+  GROUP_TERM("group_term",null,false,ALWAYS_HIDE,false,null,null,null,false,false,"GROUP_TERM",null,null,ALWAYS_SHOW,true),
+  HAT_TRICKS("hat_tricks","Hat Tricks",true,OPTIONAL,false,RANGE_FILTER,DESC,null,false,false,"Hat Tricks",SUM,null,OPTIONAL,false),
+  ID("id",null,true,ALWAYS_HIDE,false,null,null,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  INDEX("index","#",false,ALWAYS_SHOW,true,null,null,null,false,false,"#",null,null,ALWAYS_SHOW,true),
+  INNINGS("innings",null,true,ALWAYS_HIDE,false,null,DESC,null,false,false,"Innings",SUM,null,OPTIONAL,true),
+  INNINGS_LENGTH("innings_length","Innings Length",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  MAIDENS("maidens","Maidens",true,OPTIONAL,false,RANGE_FILTER,DESC,null,false,false,"Maidens",SUM,null,OPTIONAL,false),
+  MATCH_FORMAT("match_format","Match Format",true,OPTIONAL,false,SELECT_FILTER,null,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  NOT_OUTS("not_outs",null,true,ALWAYS_HIDE,false,null,null,null,false,false,"Not Outs",SUM,null,OPTIONAL,false),
+  NO_BALLS("no_balls","No Balls",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"No Balls",SUM,null,OPTIONAL,false),
+  OPPOSITION("opposition","Opposition",true,OPTIONAL,false,SELECT_FILTER,null,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  OVERS("overs","Overs",true,OPTIONAL,false,null,null,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  OVER_LENGTH("over_length","Over Length",true,OPTIONAL,false,null,null,null,false,false,null,null,null,ALWAYS_HIDE,false),
+  PLAYER_NAME("player_name","Player",true,ALWAYS_SHOW,true,SELECT_FILTER,ASC,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  POSITION("position","Position",true,OPTIONAL,false,SELECT_FILTER,ASC,"dec2NoTrail",true,false,"Avg Position",MEAN,null,OPTIONAL,false),
+  RESULT("result","Result",true,OPTIONAL,false,SELECT_FILTER,null,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  RUNS("runs","Runs",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Runs",SUM,null,OPTIONAL,true),
+  RUN_OUTS("run_outs","Run Outs",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Run Outs",SUM,null,OPTIONAL,true),
+  SEASON("season","Season",true,OPTIONAL,false,SELECT_FILTER,DESC,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  SIXES("sixes","Sixes",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Sixes",SUM,null,OPTIONAL,true),
+  STUMPINGS("stumpings","Stumpings",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Stumpings",SUM,null,OPTIONAL,true),
+  TEAM_TOTAL("team_total","Team Total",true,OPTIONAL,false,null,null,null,false,false,null,SUM,null,ALWAYS_HIDE,false),
+  WICKETS_BATTING("wickets_batting",null,true,ALWAYS_HIDE,false,null,null,null,false,false,"Wickets",SUM,null,OPTIONAL,true),
+  WICKETS_BOWLING("wickets_bowling","Wickets",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Wickets",SUM,null,OPTIONAL,true),
+  WICKET_TYPE("wicket_type","Wicket Type",true,OPTIONAL,true,SELECT_FILTER,null,null,true,false,null,null,null,ALWAYS_HIDE,false),
+  WIDES("wides","Wides",true,OPTIONAL,true,RANGE_FILTER,DESC,null,false,false,"Wides",SUM,null,OPTIONAL,false),
+  // Complex columns (must go here to avoid forward references),
+  AVERAGE_BAT("average_bat",null,false,ALWAYS_HIDE,false,null,DESC,"dec2Always",false,false,"Average",COMPLEX,new Calculation(RUNS, WICKETS_BATTING, 1),OPTIONAL,true),
+  AVERAGE_BOWL("average_bowl","Average",true,OPTIONAL,true,null,ASC,"dec2Always",false,false,"Average",COMPLEX,new Calculation(RUNS, WICKETS_BOWLING, 1),OPTIONAL,true),
+  ECONOMY("economy","Economy",true,OPTIONAL,true,RANGE_FILTER,ASC,"dec2Always",false,false,"Economy",COMPLEX,new Calculation(RUNS, DELIVERIES, 6),OPTIONAL,true),
+  PERCENT_TOTAL("percent_total","% of Total",true,OPTIONAL,false,RANGE_FILTER,DESC,"percent1Always",false,false,"Avg % of Total",COMPLEX,new Calculation(RUNS, TEAM_TOTAL, 1),OPTIONAL,false),
+  STRIKE_RATE_BAT("strike_rate_bat","Strike Rate",true,OPTIONAL,true,RANGE_FILTER,DESC,"dec2Always",false,false,"Strike Rate",COMPLEX,new Calculation(RUNS, DELIVERIES, 100),OPTIONAL,true),
+  STRIKE_RATE_BOWL("strike_rate_bowl","Strike Rate",true,OPTIONAL,true,RANGE_FILTER,ASC,"dec2Always",false,false,"Strike Rate",COMPLEX,new Calculation(DELIVERIES, WICKETS_BOWLING, 1),OPTIONAL,true);
 
   private final String key;
   private final String label;
-  private final ValueType valueType;
-  private final VisibilityType visibilityType;
+  private final Boolean rawValue;
+  private final Viewability viewability;
+  private final boolean display;
   private final FilterType filterType;
   private final SortType sortType;
-  private final Grouped grouped;
-  private final AggregateType aggregateType;
+  private final String formatter;
+  private final boolean groupable;
+  private final boolean grouped;
   private final String aggLabel;
-  private final VisibilityType aggVisibilityType;
+  private final AggregateType aggregateType;
+  private final Calculation aggCalculation;
+  private final Viewability aggViewability;
+  private final boolean aggDisplay;
 
-  Column(String key,String label,ValueType valueType,VisibilityType visibilityType,FilterType filterType,SortType sortType,Grouped grouped,AggregateType aggregateType,String aggLabel,VisibilityType aggVisibilityType) {
+  Column(String key,String label,Boolean rawValue,Viewability viewability,boolean display,FilterType filterType,SortType sortType,String formatter,boolean groupable,boolean grouped,String aggLabel,AggregateType aggregateType,Calculation aggCalculation,Viewability aggViewability,boolean aggDisplay) {
     this.key = key;
     this.label = label;
-    this.valueType = valueType;
-    this.visibilityType = visibilityType;
+    this.rawValue = rawValue;
+    this.viewability = viewability;
+    this.display = display;
     this.filterType = filterType;
     this.sortType = sortType;
+    this.formatter = formatter;
+    this.groupable = groupable;
     this.grouped = grouped;
-    this.aggregateType = aggregateType;
     this.aggLabel = aggLabel;
-    this.aggVisibilityType = aggVisibilityType;
+    this.aggregateType = aggregateType;
+    this.aggCalculation = aggCalculation;
+    this.aggViewability = aggViewability;
+    this.aggDisplay = aggDisplay;
   }
 
   public String getKey() {
@@ -84,12 +95,16 @@ public enum Column {
   return this.label;
   }
 
-  public ValueType getValueType() {
-  return this.valueType;
+  public Boolean getRawValue() {
+  return this.rawValue;
   }
 
-  public VisibilityType getVisibilityType() {
-  return this.visibilityType;
+  public Viewability getViewability() {
+  return this.viewability;
+  }
+
+  public boolean getDisplay() {
+  return this.display;
   }
 
   public FilterType getFilterType() {
@@ -100,20 +115,36 @@ public enum Column {
   return this.sortType;
   }
 
-  public Grouped getGrouped() {
-  return this.grouped;
+  public String getFormatter() {
+  return this.formatter;
   }
 
-  public AggregateType getAggregateType() {
-  return this.aggregateType;
+  public boolean getGroupable() {
+  return this.groupable;
+  }
+
+  public boolean getGrouped() {
+  return this.grouped;
   }
 
   public String getAggLabel() {
   return this.aggLabel;
   }
 
-  public VisibilityType getAggVisibilityType() {
-  return this.aggVisibilityType;
+  public AggregateType getAggregateType() {
+  return this.aggregateType;
+  }
+
+  public Calculation getAggCalculation() {
+  return this.aggCalculation;
+  }
+
+  public Viewability getAggViewability() {
+  return this.aggViewability;
+  }
+
+  public boolean getAggDisplay() {
+  return this.aggDisplay;
   }
 
 }

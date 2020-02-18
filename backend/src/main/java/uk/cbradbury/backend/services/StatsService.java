@@ -12,11 +12,12 @@ import uk.cbradbury.backend.enumerations.StatType;
 import javax.persistence.EntityManager;
 import javax.persistence.Tuple;
 import javax.persistence.TupleElement;
-import java.util.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.stream.Collectors;
-
-import static uk.cbradbury.backend.enumerations.column_meta.ValueType.DERIVED;
-import static uk.cbradbury.backend.enumerations.column_meta.ValueType.RAW;
 
 @Service
 public class StatsService {
@@ -35,11 +36,7 @@ public class StatsService {
     List<Column> columns = statColumns.stream().map(StatColumn::getColumn).collect(Collectors.toList());
 
     List<Column> selectColumns = columns.stream()
-        .filter(e -> e.getValueType() == RAW)
-        .collect(Collectors.toList());
-
-    List<Column> derivedColumns = columns.stream()
-        .filter(e -> e.getValueType() == DERIVED)
+        .filter(Column::getRawValue)
         .collect(Collectors.toList());
 
     StringBuilder sb = new StringBuilder();
@@ -78,20 +75,24 @@ public class StatsService {
 
       map.put("key", col.getKey());
       map.put("label", col.getLabel());
-      map.put("displayType", col.getValueType());
-      map.put("visibilityType", col.getVisibilityType());
+      map.put("rawValue", col.getRawValue());
+      map.put("viewability", col.getViewability());
+      map.put("display", col.getDisplay());
       map.put("filterType", col.getFilterType());
       map.put("sortType", col.getSortType());
-      map.put("groupable", col.getGrouped());
-      map.put("aggregateType", col.getAggregateType());
+      map.put("formatter", col.getFormatter());
+      map.put("groupable", col.getGroupable());
+      map.put("grouped", col.getGrouped());
       map.put("aggLabel", col.getAggLabel());
-      map.put("aggVisibilityType", col.getAggVisibilityType());
+      map.put("aggregateType", col.getAggregateType());
+      map.put("aggCalculation", col.getAggCalculation());
+      map.put("aggViewability", col.getAggViewability());
+      map.put("aggDisplay", col.getAggDisplay());
 
       map.put("displayOrder", sCol.getDisplayOrder());
-      map.put("sortOrder", sCol.getSortOrder());
-      map.put("addDisplayOrder", sCol.getAggDisplayOrder());
-      map.put("aggSortOrder", sCol.getAggSortOrder());
-      map.put("activeSelectFilter", sCol.getActiveSelectFilter());
+      map.put("aggDisplayOrder", sCol.getAggDisplayOrder());
+      map.put("sortPriority", sCol.getSortOrder());
+      map.put("selectFilters", sCol.getSelectFilters());
 
       columnList.add(map);
     }
@@ -108,10 +109,14 @@ public class StatsService {
         String key = col.getAlias();
         Class c = col.getJavaType();
         if(Integer.class.isAssignableFrom(c)) {
-          int value = (int) t.get(key);
+          Integer value = (Integer) t.get(key);
+          on.put(key, value);
+        } else if(c == BigDecimal.class) {
+          Double value = ((BigDecimal) t.get(key)).doubleValue();
           on.put(key, value);
         } else {
-          on.put(col.getAlias(), t.get(col.getAlias()).toString());
+          var value = t.get(col.getAlias()) == null ? null : t.get(col.getAlias()).toString();
+          on.put(col.getAlias(), value);
         }
       }
       json.add(on);

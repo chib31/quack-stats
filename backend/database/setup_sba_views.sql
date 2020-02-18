@@ -67,6 +67,7 @@ CREATE OR REPLACE VIEW fixture_summary AS
     END result_details
   , f.over_length
   , date_part('year', f.date) season
+  , o.name || ' (' || TO_CHAR(f.date, 'dth-Mon-yy') || ', ' || f.innings_length || ' overs)' fixture
   FROM fixture f
   JOIN team o ON f.opposition_id = o.id
   JOIN team t ON f.team_id = t.id
@@ -103,10 +104,10 @@ CREATE OR REPLACE VIEW innings_summary AS
 CREATE OR REPLACE VIEW player_batting_summary AS
   SELECT
     pbi.id
-  , fd.team_id
-  , pd.player_name
-  , fd.opposition
-  , fd.date
+  , fs.team_id
+  , ps.player_name
+  , fs.opposition
+  , fs.date
   , pbi.position
   , pbi.runs
   , pbi.deliveries
@@ -116,26 +117,29 @@ CREATE OR REPLACE VIEW player_batting_summary AS
   , bc.not_outs not_outs
   , bc.label wicket_type
   , i.runs team_total
-  , fd.result
-  , fd.match_format
-  , fd.over_length
-  , fd.season
+  , fs.result
+  , fs.match_format
+  , fs.over_length
+  , fs.season::TEXT season
   , 1 innings
+  , fs.fixture
+  , (pbi.runs::DECIMAL / NULLIF(pbi.deliveries::DECIMAL, 0)) * 100 strike_rate_bat
+  , (pbi.runs::DECIMAL / NULLIF(i.runs::DECIMAL, 0)) * 100 percent_total
   FROM player_batting_innings pbi
   JOIN squad_member sm ON pbi.squad_member_id = sm.id
-  JOIN player_summary pd ON sm.player_id = pd.id
+  JOIN player_summary ps ON sm.player_id = ps.id
   JOIN innings i ON pbi.innings_id = i.id
-  JOIN fixture_summary fd ON i.fixture_id = fd.id
+  JOIN fixture_summary fs ON i.fixture_id = fs.id
   JOIN batting_conclusion bc ON pbi.batting_conclusion_id = bc.id
 ;
 
 CREATE OR REPLACE VIEW player_bowling_summary AS
   SELECT
     pbi.id
-  , fd.team_id
-  , pd.player_name
-  , fd.opposition
-  , fd.date
+  , fs.team_id
+  , ps.player_name
+  , fs.opposition
+  , fs.date
   , pbi.bowler_number
   , pbi.deliveries
   , pbi.maidens
@@ -144,24 +148,31 @@ CREATE OR REPLACE VIEW player_bowling_summary AS
   , pbi.wides
   , pbi.no_balls
   , pbi.hat_tricks
-  , fd.result
-  , fd.match_format
-  , fd.over_length
-  , fd.season
+  , fs.result
+  , fs.match_format
+  , fs.over_length
+  , fs.season::TEXT season
   , 1 innings
+  , fs.fixture
+  , TRUNC(pbi.deliveries::decimal / 6) + (0.1 * MOD(pbi.deliveries::decimal, 6)) overs
+  , pbi.runs::decimal / NULLIF(pbi.wickets::decimal, 0) average_bowl
+  , pbi.runs::decimal / (NULLIF(pbi.deliveries::decimal, 0) / 6) economy
+  , pbi.deliveries::decimal / NULLIF(pbi.wickets::decimal, 0) strike_rate_bowl
+  , pbi.deliveries::decimal / NULLIF(pbi.wides::decimal, 0) deliveries_per_wide
+  , pbi.deliveries::decimal / NULLIF(pbi.no_balls::decimal, 0) deliveries_per_no_ball
   FROM player_bowling_innings pbi
   JOIN squad_member sm ON pbi.squad_member_id = sm.id
-  JOIN player_summary pd ON sm.player_id = pd.id
+  JOIN player_summary ps ON sm.player_id = ps.id
   JOIN innings i ON pbi.innings_id = i.id
-  JOIN fixture_summary fd ON i.fixture_id = fd.id
+  JOIN fixture_summary fs ON i.fixture_id = fs.id
 ;
 
 CREATE OR REPLACE VIEW wicket_summary AS
   SELECT
     w.id
-  , fd.team_id
-  , fd.date
-  , fd.opposition
+  , fs.team_id
+  , fs.date
+  , fs.opposition
   , bc.label
   , pb.scorecard_name bowler
   , pf.scorecard_name fielder
@@ -169,7 +180,7 @@ CREATE OR REPLACE VIEW wicket_summary AS
   , w.batter_runs
   FROM wicket w
   JOIN innings i ON w.innings_id = i.id
-  JOIN fixture_summary fd ON i.fixture_id = fd.id
+  JOIN fixture_summary fs ON i.fixture_id = fs.id
   JOIN batting_conclusion bc ON w.batting_conclusion_id = bc.id
   LEFT JOIN squad_member smb ON w.bowler_id = smb.id
   LEFT JOIN squad_member smf ON w.fielder_id = smf.id
@@ -187,7 +198,7 @@ CREATE OR REPLACE VIEW player_fielding_summary AS
       , COUNT(*) FILTER (WHERE bc.name = 'run_out') run_outs
       , COUNT(*) FILTER (WHERE bc.name = 'stumped') stumpings
       FROM squad_member sm
-      JOIN player_summary pd ON sm.player_id = pd.id
+      JOIN player_summary ps ON sm.player_id = ps.id
       JOIN wicket w ON sm.id = w.fielder_id
       JOIN batting_conclusion bc ON w.batting_conclusion_id = bc.id
       GROUP BY
@@ -195,20 +206,21 @@ CREATE OR REPLACE VIEW player_fielding_summary AS
     )
   SELECT
     sm.id
-  , fd.team_id
-  , pd.player_name
-  , fd.opposition
+  , fs.team_id
+  , ps.player_name
+  , fs.opposition
   , COALESCE(fw.catches, 0) catches
   , COALESCE(fw.run_outs, 0) run_outs
   , COALESCE(fw.stumpings, 0) stumpings
   , COALESCE(fw.catches, 0) + COALESCE(fw.run_outs, 0) + COALESCE(fw.stumpings, 0) fielding_wickets
-  , fd.date
-  , fd.season
-  , fd.result
-  , fd.match_format
+  , fs.date
+  , fs.season::TEXT season
+  , fs.result
+  , fs.match_format
   , 1 fielding_matches
+  , fs.fixture
   FROM squad_member sm
   LEFT JOIN fw ON sm.id = fw.sm_id
-  JOIN player_summary pd ON sm.player_id = pd.id
-  JOIN fixture_summary fd ON sm.fixture_id = fd.id )
+  JOIN player_summary ps ON sm.player_id = ps.id
+  JOIN fixture_summary fs ON sm.fixture_id = fs.id )
 ;

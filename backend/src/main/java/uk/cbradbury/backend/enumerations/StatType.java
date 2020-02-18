@@ -3,6 +3,7 @@ package uk.cbradbury.backend.enumerations;
 import uk.cbradbury.backend.entities.StatColumn;
 
 import java.util.List;
+import java.util.Set;
 
 import static uk.cbradbury.backend.enumerations.Column.*;
 
@@ -15,8 +16,9 @@ public enum StatType {
           new StatColumn(PLAYER_NAME, 20, null),
           new StatColumn(GROUP_TERM, null, 20),
           new StatColumn(AVERAGE_BAT, null, 30),
-          new StatColumn(RUNS, 30, 40, 1, 1, null),
-          new StatColumn(STRIKE_RATE_BAT, 40, 50, 2, 2, null),
+          new StatColumn(RUNS, 30, 40, 1, null),
+          new StatColumn(DELIVERIES, 35, 45),
+          new StatColumn(STRIKE_RATE_BAT, 40, 50, 2, null),
           new StatColumn(INNINGS, null, 60),
           new StatColumn(FOURS, 50, 70),
           new StatColumn(SIXES, 60, 80),
@@ -26,7 +28,7 @@ public enum StatType {
           new StatColumn(WICKETS_BATTING, 100, 120),
           new StatColumn(NOT_OUTS, null, 120),
           new StatColumn(FIXTURE, 110, null),
-          new StatColumn(SEASON, 120, null, null, null, "2019"),
+          new StatColumn(SEASON, 120, null, null, Set.of("2019")),
           new StatColumn(OPPOSITION, 130, null),
           new StatColumn(DATE, 140, null),
           new StatColumn(RESULT, 150, null),
@@ -43,10 +45,10 @@ public enum StatType {
           new StatColumn(PLAYER_NAME, 20, null),
           new StatColumn(GROUP_TERM, null, 20),
           new StatColumn(DELIVERIES, 30, 30),
-          new StatColumn(WICKETS_BOWLING, 40, 40, 1, 1, null),
+          new StatColumn(WICKETS_BOWLING, 40, 40, 1, null),
           new StatColumn(RUNS, 50, 50),
           new StatColumn(MAIDENS, 60, 60),
-          new StatColumn(ECONOMY, 70, 70, 2, 2, null),
+          new StatColumn(ECONOMY, 70, 70, 2, null),
           new StatColumn(AVERAGE_BOWL, 80, 80),
           new StatColumn(STRIKE_RATE_BOWL, 90, 90),
           new StatColumn(INNINGS, null, 100),
@@ -54,7 +56,7 @@ public enum StatType {
           new StatColumn(WIDES, 110, 110),
           new StatColumn(NO_BALLS, 120, 120),
           new StatColumn(FIXTURE, 130, null),
-          new StatColumn(SEASON, 140, null, null, null, "2019"),
+          new StatColumn(SEASON, 140, null, null, Set.of("2019")),
           new StatColumn(OPPOSITION, 150, null),
           new StatColumn(DATE, 160, null),
           new StatColumn(RESULT, 170, null),
@@ -72,14 +74,14 @@ public enum StatType {
           new StatColumn(CATCHES, 30, 30),
           new StatColumn(RUN_OUTS, 40, 40),
           new StatColumn(STUMPINGS, 50, 50),
-          new StatColumn(FIELDING_WICKETS, 60, 60, 1, 1, null),
+          new StatColumn(FIELDING_WICKETS, 60, 60, 1, null),
           new StatColumn(FIXTURE, 70, null),
-          new StatColumn(SEASON, 80, null, null, null, "2019"),
+          new StatColumn(SEASON, 80, null, null, Set.of("2019")),
           new StatColumn(OPPOSITION, 90, null),
           new StatColumn(DATE, 100, null),
           new StatColumn(RESULT, 110, null),
           new StatColumn(MATCH_FORMAT, 120, null),
-          new StatColumn(FIELDING_MATCHES, 120, null, null, 2, null)
+          new StatColumn(FIELDING_MATCHES, 120, null, null, null)
       )
   );
 

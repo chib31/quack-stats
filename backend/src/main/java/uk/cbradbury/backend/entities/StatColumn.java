@@ -2,26 +2,26 @@ package uk.cbradbury.backend.entities;
 
 import uk.cbradbury.backend.enumerations.Column;
 
+import java.util.Set;
+
 public class StatColumn {
   private Column column;
   private Integer displayOrder;
   private Integer aggDisplayOrder;
   private Integer sortOrder;
-  private Integer aggSortOrder;
-  private String activeSelectFilter;
+  private Set<String> selectFilters;
 
   public StatColumn(Column column, Integer displayOrder, Integer aggDisplayOrder, Integer sortOrder,
-                    Integer aggSortOrder, String activeSelectFilter) {
+                    Set<String> selectFilters) {
     this.column = column;
     this.displayOrder = displayOrder;
     this.aggDisplayOrder = aggDisplayOrder;
     this.sortOrder = sortOrder;
-    this.aggSortOrder = aggSortOrder;
-    this.activeSelectFilter = activeSelectFilter;
+    this.selectFilters = selectFilters;
   }
 
   public StatColumn(Column column, Integer displayOrder, Integer aggDisplayOrder) {
-    this(column, displayOrder, aggDisplayOrder, null, null, null);
+    this(column, displayOrder, aggDisplayOrder, null, null);
   }
 
   public Column getColumn() {
@@ -40,11 +40,7 @@ public class StatColumn {
     return sortOrder;
   }
 
-  public Integer getAggSortOrder() {
-    return aggSortOrder;
-  }
-
-  public String getActiveSelectFilter() {
-    return activeSelectFilter;
+  public Set<String> getSelectFilters() {
+    return selectFilters;
   }
 }

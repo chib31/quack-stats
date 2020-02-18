@@ -3,10 +3,17 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\backend\column_meta.csv">
+          <value>
+            <Attribute>
+              <option name="valueSeparator" value="COMMA" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\backend\src\main\resources\column_meta.csv">
           <value>
             <Attribute>
-              <option name="separator" value="," />
+              <option name="valueSeparator" value="COMMA" />
             </Attribute>
           </value>
         </entry>

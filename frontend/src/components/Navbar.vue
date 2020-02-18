@@ -8,7 +8,7 @@
       <b-navbar-nav variant="dark" type="dark" class="ml-auto">
         <b-nav-item to="/results"><b-icon-calendar/> Results</b-nav-item>
         <b-nav-item to="/players"><b-icon-person/> Players</b-nav-item>
-        <b-nav-item-dropdown>
+        <b-nav-item-dropdown right>
           <template slot="button-content"><b-icon-bar-chart/> Stats</template>
           <b-dropdown-item to="/stats/batting">Batting</b-dropdown-item>
           <b-dropdown-item to="/stats/bowling">Bowling</b-dropdown-item>

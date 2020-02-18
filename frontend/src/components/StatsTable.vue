@@ -21,60 +21,61 @@
       <b-col>
         <b-container fluid class="px-1 thinBorder rounded" style="background-color: white">
           <b-table
-              id="stats-table"
-              :items="filteredData"
-              :fields="displayedColumns"
-              :perPage="perPage"
-              :currentPage="currentPage"
-              :busy="tableLoading"
-              thead-class="text-nowrap"
-              tbody-class="text-nowrap"
-              sticky-header="1000px"
-              striped hover small sort-icon-left no-local-sorting no-sorting
-              class="my-0 text-left">
-            <template v-slot:head()="displayedColumns">
+            id="stats-table"
+            :items="tableData"
+            :fields="tableColumns"
+            :perPage="perPage"
+            :currentPage="currentPage"
+            :busy="tableLoading"
+            thead-class="text-nowrap"
+            tbody-class="text-nowrap"
+            sticky-header="1000px"
+            striped hover small sort-icon-left no-local-sorting no-sorting
+            class="my-0 text-left">
+            <template v-slot:head()="col">
               <span class="visibleChildOnHover">
-                <b-button pill
-                          variant="light"
+                <b-button variant="light"
                           class="py-0 px-1"
                           style="font-weight: bold; background-color: white; margin-left: -0.2rem;"
-                          :disabled="displayedColumns.field['sortColumn'] !== true"
-                          @click="clickHeader(displayedColumns.field.key)">
-                  {{ displayedColumns.field.label }}
-                  <span v-if="sortColumns.length > 1 && sortColumns.some(e => e.key === displayedColumns.field.key)">
-                    <b-icon-arrow-up-short
-                      v-if="sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Asc'"/>
-                    <b-icon-arrow-down-short
-                      v-if="sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Desc'"/>
+                          :disabled="!col.field['sortType']"
+                          @click="clickHeader(col.field)">
+                  {{ col.field[labelKey] }}
+                  <span v-if="col.field['sortType'] && col.field['sortPriority']">
+                    <b-icon-arrow-up-short :id="col.key + '-sort-asc-icon'"
+                                           v-if="col.field['sortType'] === 'ASC'"/>
+                    <b-icon-arrow-down-short :id="col.key + '-sort-desc-icon'"
+                                             v-if="col.field['sortType'] === 'DESC'"/>
                   </span>
                 </b-button>
-                <b-button pill
-                          v-if="sortColumns.length > 1 && sortColumns.some(e => e.key === displayedColumns.field.key)"
+                <b-button :id="col.key + '-sort-priority'"
+                          pill
+                          v-if="sortColumnCount > 1 && col.field['sortPriority']"
                           variant="outline-dark"
                           size="sm"
                           class="py-0 px-1"
                           style="font-weight: bold;"
-                          @click="clickExistingPriority(displayedColumns.field.key)">
-                  {{ sortColumns.findIndex(e => e.key === displayedColumns.field.key) + 1 }}
+                          @click="clickExistingPriority(col.field)">
+                  {{ col.field['sortPriority'] }}
                 </b-button>
-                <b-button pill
-                          v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
+                <b-button :id="col.key + '-sort-clear-icon'"
+                          pill
+                          v-if="col.field['sortType']"
                           variant="outline-secondary"
                           size="sm"
                           class="py-0 px-1 ml-1 visibleOnHover"
-                          @click="clearSortPriority(displayedColumns.field.key)">
+                          @click="clearSortPriority(col.field)">
                   <b-icon-x-circle/>
                 </b-button>
-                <b-button pill
-                          v-if="sortColumns.length > 0 &&
-                            sortColumns.length < 3 &&
-                            displayedColumns.field['sortColumn'] === true &&
-                            !sortColumns.some(e => e.key === displayedColumns.field.key)"
+                <b-button :id="col.key + '-sort-priority-new'"
+                          pill
+                          v-if="sortColumnCount > 0
+                            && !col.field['sortPriority']
+                            && col.field['sortType']"
                           variant="outline-secondary"
                           size="sm"
                           class="py-0 px-1 ml-1 visibleOnHover"
-                          @click="clickNextPriority(displayedColumns.field.key)">
-                  {{ sortColumns.length + 1 }}
+                          @click="clickNewPriority(col.field)">
+                  {{ sortColumnCount + 1 }}
                 </b-button>
               </span>
             </template>
@@ -115,10 +116,10 @@
   export default {
     name: "StatsTable",
     props: {
-      filteredData: {type: Array},
-      displayedColumns: {type: Array},
+      tableData: {type: Array},
+      tableColumns: {type: Array},
       tableLoading: {type: Boolean, default: false},
-      sortColumns: {type: Array},
+      groupingActive: {type: Boolean},
     },
     data() {
       return {
@@ -134,25 +135,42 @@
     },
     computed: {
       filteredDataLength() {
-        return this.filteredData.length;
+        return this.tableData.length;
       },
       paginationRequired() {
         return this.filteredDataLength > this.perPage;
       },
+      labelKey() {
+        return this.groupingActive ? 'aggLabel' : 'label';
+      },
+      sortColumnCount() {
+        return this.tableColumns.filter(e => e['sortPriority']).length;
+      }
     },
     methods: {
-      clickHeader(key) {
-        this.$emit('clickHeader', key);
+      clickHeader(col) {
+        this.$emit('clickHeader', col);
       },
-      clickNextPriority(key) {
-        this.$emit('clickNextPriority', key);
+      clickNewPriority(col) {
+        this.$emit('clickNewPriority', col);
       },
-      clickExistingPriority(key) {
-        this.$emit('clickExistingPriority', key);
+      clickExistingPriority(col) {
+        this.$emit('clickExistingPriority', col);
       },
-      clearSortPriority(key) {
-        this.$emit('clearSortPriority', key);
-      }
+      clearSortPriority(col) {
+        this.$emit('clearSortPriority', col);
+      },
+
+      // Formatters for cell data
+      dec2Always(value) {
+        return value === null ? '' : parseFloat(`${value}`).toFixed(2);
+      },
+      dec2NoTrail(value) {
+        return value === null ? '' : Math.round((parseFloat(`${value}`) + Number.EPSILON) * 100) / 100;
+      },
+      percent1Always(value) {
+        return value === null ? '' : parseFloat(`${value}`).toFixed(1) + '%';
+      },
     }
   }
 </script>

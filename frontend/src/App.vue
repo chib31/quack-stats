@@ -9,12 +9,26 @@
 
 <script>
   import Navbar from './components/Navbar';
+  import config from './config.js';
 
   export default {
     name: 'app',
     components: {
       Navbar
     },
+    watch: {
+      '$route' (to, from) {
+        this.setTitle(to.meta.title);
+      }
+    },
+    mounted() {
+      this.setTitle('');
+    },
+    methods: {
+      setTitle(page) {
+        document.title = (config.TEAM_NAME + ' ' + page).trim();
+      }
+    }
   }
 </script>
 

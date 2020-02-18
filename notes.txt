@@ -1,25 +1,60 @@
-1) Raw Data
+===StatsPage===
 
-2) Refined Data (computed)
-	- select filters applied
-	- grouping applied
+*cols1Raw* (Update on this: filters, grouping)
 
-3) Table Data (data - copies )
-	- range filters applied
-	- sorting applied
+**data1Raw** (Never changes)
+
+- Apply: group()
+*cCols2Grouped*
+
+- Apply: filter() -> group()
+**cData2FilteredGrouped**
+
+- Watch cData2FilteredGrouped and apply rangeLimits to cols3Grouped
+
+- Watch cCols2Grouped and clone to: and apply rangeLimits and initial rangeValues (based on cData2FilteredGrouped):
+*cols3Grouped* (Update on this: rangeValues, colSelections, sorting)
+
+- Apply colSelect()
+*cCols4Final*
+
+- Apply: ranges() --> sort()
+**cData3Final**
+
+Pass cCols4Final, cData3Final as props to:
+===StatsTable===
+which passes them directly to:
+===B-Table=== (handles pagination)
 
 
-Select filter options and model are on the raw data.
-Grouping options + model are on the raw data.
+Problem: changing a range involves changing cols3Grouped. This is
 
-I can't use a computed value for Table Data because I need to saved data on it that doesn't apply to the raw data
-
-So - I need a watcher which detects whenever Refined Data changes, then:
-	- copies Refined Data to Table Data
-	- calculates maxRangeLimit and minRangeLimit values for all range filter columns, and add these values to the column on Refined Data
-	- applies sorting to 
+setRangeLimits appears to trigger an infinite loop
+However it only changes col3Grouped
+and setRangeLimits is only triggered by the watcher on cData2FilteredGrouped
+which is only dependent on cols1Raw and data1Raw
 
 
 
+********************************************************************************************
+
+cols1Raw  c-->  cCols2Grouped           W-->  cols3Grouped  c-->  cCols4Final
+                cData2FilteredGrouped                       c-->  cData3Final
+
+1) An update to cols1Raw automatically propagates to cCols2Grouped and cData2Grouped
+2) A detected change on cCols2Grouped automatically refreshes cols3Grouped (via watcher)
+3) An update to cols3Grouped automatically propagates to cCols4Final and cData3Final
+********************************************************************************************
 
 
+- Changing grouping resets:             rangeLimits, rangeValues, colSelections, sorting
+- Changing filters resets:              rangeLimits, rangeValues, colSelections, sorting
+- Changing rangeLimits resets:          nothing
+- Changing rangeValues resets:          nothing
+- Changing colSelections resets:        nothing
+- Changing sorting resets:              nothing
+
+
+Filter choices and grouping choices are independent of each other.
+RangeLimits, rangeValues, colSelections and sorting are all depending on Filters and Grouping.
+RangeLimits, rangeValues, colSelections and sorting are independent on each other.
